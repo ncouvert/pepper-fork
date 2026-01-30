@@ -14,7 +14,7 @@ package fr.cea.deeplab.projectmanagement.starter.configuration;
 
 import fr.cea.deeplab.projectmgmt.provider.ProjectmgmtItemProviderAdapterFactory;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,7 +27,7 @@ import org.springframework.context.annotation.Configuration;
 public class ProjectManagementEMFConfiguration {
 
     @Bean
-    public AdapterFactory projectManagementAdapterFactory() {
-        return new ProjectmgmtItemProviderAdapterFactory();
+    public ComposedAdapterFactory.Descriptor projectManagementAdapterFactory() {
+        return ProjectmgmtItemProviderAdapterFactory::new;
     }
 }

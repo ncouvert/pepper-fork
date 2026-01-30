@@ -16,7 +16,6 @@ import fr.cea.deeplab.projectmgmt.TaskTag;
 
 import java.util.Optional;
 
-import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.sirius.components.core.api.IEditService;
 import org.eclipse.sirius.components.core.api.IFeedbackMessageService;
 import org.eclipse.sirius.components.core.api.ILabelService;
@@ -36,9 +35,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProjectManagementEditServiceDelegate extends DefaultEditService implements IExplorerLabelServiceDelegate {
 
-    public ProjectManagementEditServiceDelegate(IEMFKindService emfKindService, ComposedAdapterFactory composedAdapterFactory, Optional<ISuggestedRootObjectTypesProvider> optionalSuggestedRootObjectsProvider,
+    public ProjectManagementEditServiceDelegate(IEMFKindService emfKindService, Optional<ISuggestedRootObjectTypesProvider> optionalSuggestedRootObjectsProvider,
             IObjectSearchService objectSearchService, ILabelService labelService, IFeedbackMessageService feedbackMessageService, IEMFMessageService messageService) {
-        super(emfKindService, composedAdapterFactory, optionalSuggestedRootObjectsProvider, objectSearchService, labelService, feedbackMessageService, messageService);
+        super(emfKindService, optionalSuggestedRootObjectsProvider, objectSearchService, labelService, feedbackMessageService, messageService);
     }
 
     @Override

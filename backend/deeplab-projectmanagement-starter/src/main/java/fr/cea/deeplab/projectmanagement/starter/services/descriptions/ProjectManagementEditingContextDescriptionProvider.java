@@ -59,15 +59,20 @@ public class ProjectManagementEditingContextDescriptionProvider implements IEdit
 
     private final CursorBasedNavigationServices cursorBasedNavigationServices;
 
-    public ProjectManagementEditingContextDescriptionProvider(ComposedAdapterFactory composedAdapterFactory, ILabelService labelService, IIdentityService identityService, IObjectSearchService objectSearchService, IProjectManagementMessageService projectManagementMessageService,
+    public ProjectManagementEditingContextDescriptionProvider(List<ComposedAdapterFactory.Descriptor> composedAdapterFactoryDescriptors, ILabelService labelService, IIdentityService identityService, IObjectSearchService objectSearchService, IProjectManagementMessageService projectManagementMessageService,
             IFeedbackMessageService feedbackMessageService) {
         this.labelService = Objects.requireNonNull(labelService);
         this.identityService = Objects.requireNonNull(identityService);
         this.objectSearchService = Objects.requireNonNull(objectSearchService);
-        this.composedAdapterFactory = Objects.requireNonNull(composedAdapterFactory);
         this.projectManagementMessageService = Objects.requireNonNull(projectManagementMessageService);
         this.feedbackMessageService = feedbackMessageService;
         this.cursorBasedNavigationServices = new CursorBasedNavigationServices();
+
+        ComposedAdapterFactory factory = new ComposedAdapterFactory();
+        composedAdapterFactoryDescriptors.forEach(descriptor ->
+                factory.addAdapterFactory(descriptor.createAdapterFactory())
+        );
+        this.composedAdapterFactory = factory;
     }
 
     @Override

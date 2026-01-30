@@ -168,7 +168,7 @@ public class PlanningAndCostingPageDescription {
     }
 
     private Function<VariableManager, String> getLabelProvider(EStructuralFeature feature) {
-        return new EStructuralFeatureLabelProvider(EMFFormDescriptionProvider.ESTRUCTURAL_FEATURE, this.composedAdapterFactory) {
+        return new EStructuralFeatureLabelProvider(EMFFormDescriptionProvider.ESTRUCTURAL_FEATURE) {
             @Override
             public String apply(VariableManager variableManager) {
                 VariableManager childVM = variableManager.createChild();

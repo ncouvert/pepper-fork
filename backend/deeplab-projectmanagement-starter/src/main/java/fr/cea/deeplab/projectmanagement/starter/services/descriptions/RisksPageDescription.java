@@ -50,7 +50,6 @@ import org.eclipse.sirius.components.tables.descriptions.TableDescription;
  */
 public class RisksPageDescription {
 
-    //private final IObjectService objectService;
     private final ILabelService labelService;
 
     private final IIdentityService identityService;
@@ -101,9 +100,10 @@ public class RisksPageDescription {
                 .headerLabelProvider(labelProvider)
                 .headerIconURLsProvider(vm -> List.of())
                 .headerIndexLabelProvider(vm -> "")
-                .initialHeightProvider(vm -> 40)
+                .initialHeightProvider(vm -> 60)
                 .isResizablePredicate(vm -> true)
                 .depthLevelProvider(vm -> 0)
+                .hasChildrenProvider(vm -> true)
                 .build();
 
 
@@ -119,9 +119,9 @@ public class RisksPageDescription {
                 .columnDescriptions(List.of(widgetDescriptionBuilderHelper.buildFeaturesColumnDescription(ProjectmgmtFactory.eINSTANCE.createRisk())))
                 .cellDescriptions(widgetDescriptionBuilderHelper.buildCellDescription())
                 .iconURLsProvider(vm -> List.of())
-                .enableSubRows(true)
+                .enableSubRows(false)
                 .pageSizeOptionsProvider(vm -> List.of(10, 20))
-                .defaultPageSizeIndexProvider(vm -> 20)
+                .defaultPageSizeIndexProvider(vm -> 1)
                 .build();
 
         TableWidgetDescription tableWidgetDescription = TableWidgetDescription.newTableWidgetDescription("risksTableWidgetId")
