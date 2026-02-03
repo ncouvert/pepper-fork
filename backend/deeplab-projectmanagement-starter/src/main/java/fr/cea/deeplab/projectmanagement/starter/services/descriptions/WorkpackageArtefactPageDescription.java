@@ -30,6 +30,7 @@ import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
@@ -59,6 +60,8 @@ import org.eclipse.sirius.components.tables.components.SelectCellComponent;
 import org.eclipse.sirius.components.tables.elements.MultiSelectCellElementProps;
 import org.eclipse.sirius.components.tables.elements.SelectCellElementProps;
 import org.eclipse.sirius.components.tables.elements.TextfieldCellElementProps;
+import org.eclipse.sirius.web.application.table.customcells.CheckboxCellDescription;
+import org.eclipse.sirius.web.application.table.customcells.CheckboxCellElementProps;
 
 /**
  * This class is used to provide the project page description for the project workpackage artefact.
@@ -229,6 +232,15 @@ public class WorkpackageArtefactPageDescription {
                         .cellValueProvider(this.getCellValueProvider())
                         .cellTooltipValueProvider((vm, o) -> "")
                         .build());
+        iCellDescriptionList.add(
+                CheckboxCellDescription.newCheckboxCellDescription("checkboxCells")
+                        .canCreatePredicate(this.canCreateCellProvider(CheckboxCellElementProps.TYPE))
+                        .targetObjectIdProvider(vm -> "")
+                        .targetObjectKindProvider(vm -> "")
+                        .cellValueProvider(this.getCheckboxCellValueProvider())
+                        .cellTooltipValueProvider((vm, o) -> "")
+                        .build()
+        );
         return iCellDescriptionList;
     }
 
@@ -283,6 +295,21 @@ public class WorkpackageArtefactPageDescription {
         };
     }
 
+    private BiFunction<VariableManager, Object, Boolean> getCheckboxCellValueProvider() {
+        return (variableManager, columnTargetObject) -> {
+            boolean value = false;
+            Optional<EObject> optionalEObject = variableManager.get(VariableManager.SELF, EObject.class);
+            if (optionalEObject.isPresent() && columnTargetObject instanceof EStructuralFeature eStructuralFeature) {
+                EObject eObject = optionalEObject.get();
+                Object objectValue = eObject.eGet(eStructuralFeature);
+                if (objectValue != null) {
+                    value = Boolean.parseBoolean(objectValue.toString());
+                }
+            }
+            return value;
+        };
+    }
+
     Predicate<VariableManager> canCreateCellProvider(String requiredCellType) {
         return (variableManager) -> {
             Optional<String> optionalString = variableManager.get("columnTargetObject", String.class);
@@ -301,6 +328,9 @@ public class WorkpackageArtefactPageDescription {
                 if (eStructuralFeature instanceof EAttribute) {
                     if (eType instanceof EEnum) {
                         type = SelectCellElementProps.TYPE;
+                    }
+                    else if (eType instanceof  EDataType eDataType && eDataType.getInstanceClass().equals(Boolean.class)) {
+                        type = CheckboxCellElementProps.TYPE;
                     }
                 } else {
                     EReference eReference = (EReference) eStructuralFeature;
