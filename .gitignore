@@ -2,7 +2,7 @@
 .~lock*#
 yalc.lock
 .yalc
-
+package-lock.json
 
 ### macOS ###
 .DS_Store
