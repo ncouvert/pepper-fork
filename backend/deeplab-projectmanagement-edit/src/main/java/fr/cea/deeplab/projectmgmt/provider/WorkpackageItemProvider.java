@@ -69,6 +69,8 @@ public class WorkpackageItemProvider extends ItemProviderAdapter
             this.addParticipantsPropertyDescriptor(object);
             this.addEffortPropertyDescriptor(object);
             this.addProgressPropertyDescriptor(object);
+            this.addCalculationOptionPropertyDescriptor(object);
+            this.addDurationPropertyDescriptor(object);
         }
         return this.itemPropertyDescriptors;
     }
@@ -162,6 +164,28 @@ public class WorkpackageItemProvider extends ItemProviderAdapter
     }
 
     /**
+     * This adds a property descriptor for the Calculation Option feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addCalculationOptionPropertyDescriptor(Object object) {
+        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
+                this.getString("_UI_Workpackage_calculationOption_feature"), this.getString("_UI_PropertyDescriptor_description", "_UI_Workpackage_calculationOption_feature", "_UI_Workpackage_type"),
+                ProjectmgmtPackage.Literals.WORKPACKAGE__CALCULATION_OPTION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Duration feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDurationPropertyDescriptor(Object object) {
+        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
+                this.getString("_UI_Workpackage_duration_feature"), this.getString("_UI_PropertyDescriptor_description", "_UI_Workpackage_duration_feature", "_UI_Workpackage_type"),
+                ProjectmgmtPackage.Literals.WORKPACKAGE__DURATION, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
@@ -173,6 +197,7 @@ public class WorkpackageItemProvider extends ItemProviderAdapter
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (this.childrenFeatures == null) {
             super.getChildrenFeatures(object);
+            this.childrenFeatures.add(ProjectmgmtPackage.Literals.DEPENDENCY__DEPENDENCIES);
             this.childrenFeatures.add(ProjectmgmtPackage.Literals.WORKPACKAGE__OUTPUTS);
             this.childrenFeatures.add(ProjectmgmtPackage.Literals.WORKPACKAGE__OWNED_TASKS);
             this.childrenFeatures.add(ProjectmgmtPackage.Literals.WORKPACKAGE__OWNED_OBJECTIVES);
@@ -242,8 +267,11 @@ public class WorkpackageItemProvider extends ItemProviderAdapter
             case ProjectmgmtPackage.WORKPACKAGE__END_DATE:
             case ProjectmgmtPackage.WORKPACKAGE__EFFORT:
             case ProjectmgmtPackage.WORKPACKAGE__PROGRESS:
+            case ProjectmgmtPackage.WORKPACKAGE__CALCULATION_OPTION:
+            case ProjectmgmtPackage.WORKPACKAGE__DURATION:
                 this.fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
+            case ProjectmgmtPackage.WORKPACKAGE__DEPENDENCIES:
             case ProjectmgmtPackage.WORKPACKAGE__OUTPUTS:
             case ProjectmgmtPackage.WORKPACKAGE__OWNED_TASKS:
             case ProjectmgmtPackage.WORKPACKAGE__OWNED_OBJECTIVES:
@@ -264,6 +292,8 @@ public class WorkpackageItemProvider extends ItemProviderAdapter
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(this.createChildParameter(ProjectmgmtPackage.Literals.DEPENDENCY__DEPENDENCIES, ProjectmgmtFactory.eINSTANCE.createDependencyLink()));
 
         newChildDescriptors.add(this.createChildParameter(ProjectmgmtPackage.Literals.WORKPACKAGE__OUTPUTS, ProjectmgmtFactory.eINSTANCE.createWorkpackageArtefact()));
 

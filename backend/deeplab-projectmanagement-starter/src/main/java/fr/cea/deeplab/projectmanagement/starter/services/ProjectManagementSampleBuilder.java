@@ -12,6 +12,7 @@
  *******************************************************************************/
 package fr.cea.deeplab.projectmanagement.starter.services;
 
+import fr.cea.deeplab.projectmgmt.DependencyLink;
 import fr.cea.deeplab.projectmgmt.ExternalStakeholder;
 import fr.cea.deeplab.projectmgmt.InternalStakeholder;
 import fr.cea.deeplab.projectmgmt.KeyResult;
@@ -24,6 +25,7 @@ import fr.cea.deeplab.projectmgmt.ResourceFolder;
 import fr.cea.deeplab.projectmgmt.TagFolder;
 import fr.cea.deeplab.projectmgmt.Task;
 import fr.cea.deeplab.projectmgmt.TaskTag;
+import fr.cea.deeplab.projectmgmt.TaskTimeBoundariesConstraint;
 import fr.cea.deeplab.projectmgmt.Team;
 import fr.cea.deeplab.projectmgmt.Workpackage;
 import fr.cea.deeplab.projectmgmt.WorkpackageArtefact;
@@ -98,11 +100,20 @@ public class ProjectManagementSampleBuilder {
     }
 
 
+    private Task createRelease() {
+        Task release = ProjectmgmtFactory.eINSTANCE.createTask();
+        release.setName(RELEASE);
+        release.setStartTime(Instant.parse(DATE_2023_12_18T08_30_00Z));
+        release.setEndTime(Instant.parse(DATE_2023_12_18T08_30_00Z));
+        return release;
+    }
+
     private Project createDevProject(Person paul, Person peter) {
         Project devProject = ProjectmgmtFactory.eINSTANCE.createProject();
         devProject.setName("Project Dev");
         Workpackage workpackage = ProjectmgmtFactory.eINSTANCE.createWorkpackage();
         workpackage.setName(MAIN_WORKPACKAGE);
+        workpackage.setCalculationOption(TaskTimeBoundariesConstraint.START_END);
         devProject.getOwnedWorkpackages().add(workpackage);
 
         Task idea = ProjectmgmtFactory.eINSTANCE.createTask();
@@ -117,14 +128,20 @@ public class ProjectManagementSampleBuilder {
         spec.setStartTime(Instant.parse("2023-12-11T08:30:00Z"));
         spec.setEndTime(Instant.parse("2023-12-12T17:30:00Z"));
         spec.setProgress(50);
-        spec.getDependencies().add(idea);
+
+        DependencyLink depSpecToIdea = ProjectmgmtFactory.eINSTANCE.createDependencyLink();
+        depSpecToIdea.setDependency(idea);
+        spec.getDependencies().add(depSpecToIdea);
 
         Task development = ProjectmgmtFactory.eINSTANCE.createTask();
         development.setName(DEVELOPMENT);
         development.setStartTime(Instant.parse(DATE_2023_12_13T08_30_00Z));
         development.setEndTime(Instant.parse(DATE_2023_12_16T17_30_00Z));
-        development.getDependencies().add(spec);
         development.setComputeStartEndDynamically(true);
+
+        DependencyLink depDevelopmentToSpec = ProjectmgmtFactory.eINSTANCE.createDependencyLink();
+        depDevelopmentToSpec.setDependency(spec);
+        development.getDependencies().add(depDevelopmentToSpec);
 
         Task codeDev = ProjectmgmtFactory.eINSTANCE.createTask();
         codeDev.setName(CODE_DEVELOPMENT);
@@ -154,12 +171,7 @@ public class ProjectManagementSampleBuilder {
         development.getSubTasks().addAll(List.of(codeDev, review));
         codeDev.getAssignedPersons().add(paul);
 
-        Task release = ProjectmgmtFactory.eINSTANCE.createTask();
-        release.setName(RELEASE);
-        release.setStartTime(Instant.parse(DATE_2023_12_18T08_30_00Z));
-        release.setEndTime(Instant.parse(DATE_2023_12_18T08_30_00Z));
-
-        workpackage.getOwnedTasks().addAll(List.of(idea, spec, development, release));
+        workpackage.getOwnedTasks().addAll(List.of(idea, spec, development, this.createRelease()));
         return devProject;
     }
 
@@ -167,6 +179,7 @@ public class ProjectManagementSampleBuilder {
         Project dailyProject = ProjectmgmtFactory.eINSTANCE.createProject();
         dailyProject.setName("Daily Project Dev");
         Workpackage workpackage = ProjectmgmtFactory.eINSTANCE.createWorkpackage();
+        workpackage.setCalculationOption(TaskTimeBoundariesConstraint.START_END);
         workpackage.setName(MAIN_WORKPACKAGE);
         dailyProject.getOwnedWorkpackages().add(workpackage);
         TagFolder tagFolder = ProjectmgmtFactory.eINSTANCE.createTagFolder();
@@ -187,15 +200,21 @@ public class ProjectManagementSampleBuilder {
         spec.setStartTime(Instant.parse(DATE_2023_12_11T08_30_00Z));
         spec.setEndTime(Instant.parse(DATE_2023_12_12T17_30_00Z));
         spec.setProgress(50);
-        spec.getDependencies().add(idea);
         spec.getTags().add(dailyTags.get(0));
+
+        DependencyLink depSpecToIdea = ProjectmgmtFactory.eINSTANCE.createDependencyLink();
+        depSpecToIdea.setDependency(idea);
+        spec.getDependencies().add(depSpecToIdea);
 
         Task development = ProjectmgmtFactory.eINSTANCE.createTask();
         development.setName(DEVELOPMENT);
         development.setStartTime(Instant.parse(DATE_2023_12_13T08_30_00Z));
         development.setEndTime(Instant.parse(DATE_2023_12_16T17_30_00Z));
-        development.getDependencies().add(spec);
         development.getTags().add(dailyTags.get(1));
+
+        DependencyLink depDevelopmentToSpec = ProjectmgmtFactory.eINSTANCE.createDependencyLink();
+        depDevelopmentToSpec.setDependency(spec);
+        development.getDependencies().add(depDevelopmentToSpec);
 
         Task codeDev = ProjectmgmtFactory.eINSTANCE.createTask();
         codeDev.setName(CODE_DEVELOPMENT);
@@ -227,6 +246,7 @@ public class ProjectManagementSampleBuilder {
         Project kanbanProject = ProjectmgmtFactory.eINSTANCE.createProject();
         kanbanProject.setName("Kanban Project Dev");
         Workpackage workpackage = ProjectmgmtFactory.eINSTANCE.createWorkpackage();
+        workpackage.setCalculationOption(TaskTimeBoundariesConstraint.START_END);
         workpackage.setName(MAIN_WORKPACKAGE);
         kanbanProject.getOwnedWorkpackages().add(workpackage);
 
@@ -248,7 +268,9 @@ public class ProjectManagementSampleBuilder {
         spec.setStartTime(Instant.parse(DATE_2023_12_11T08_30_00Z));
         spec.setEndTime(Instant.parse(DATE_2023_12_12T17_30_00Z));
         spec.setProgress(50);
-        spec.getDependencies().add(idea);
+        DependencyLink depSpecToIdea = ProjectmgmtFactory.eINSTANCE.createDependencyLink();
+        depSpecToIdea.setDependency(idea);
+        spec.getDependencies().add(depSpecToIdea);
         //We add it in Done tag
         spec.getTags().add(kanbanTags.get(2));
 
@@ -256,7 +278,10 @@ public class ProjectManagementSampleBuilder {
         development.setName(DEVELOPMENT);
         development.setStartTime(Instant.parse(DATE_2023_12_13T08_30_00Z));
         development.setEndTime(Instant.parse(DATE_2023_12_16T17_30_00Z));
-        development.getDependencies().add(spec);
+
+        DependencyLink depDevelopmentToSpec = ProjectmgmtFactory.eINSTANCE.createDependencyLink();
+        depDevelopmentToSpec.setDependency(spec);
+        development.getDependencies().add(depDevelopmentToSpec);
         //We add it in Doing tag
         development.getTags().add(kanbanTags.get(1));
 
@@ -293,6 +318,7 @@ public class ProjectManagementSampleBuilder {
         Project okrProject = ProjectmgmtFactory.eINSTANCE.createProject();
         okrProject.setName("OKR Project Dev");
         Workpackage workpackage = ProjectmgmtFactory.eINSTANCE.createWorkpackage();
+        workpackage.setCalculationOption(TaskTimeBoundariesConstraint.START_END);
         workpackage.setName(MAIN_WORKPACKAGE);
         okrProject.getOwnedWorkpackages().add(workpackage);
 
@@ -313,13 +339,19 @@ public class ProjectManagementSampleBuilder {
         spec.setStartTime(Instant.parse(DATE_2023_12_11T08_30_00Z));
         spec.setEndTime(Instant.parse(DATE_2023_12_12T17_30_00Z));
         spec.setProgress(50);
-        spec.getDependencies().add(idea);
+
+        DependencyLink depSpecToIdea = ProjectmgmtFactory.eINSTANCE.createDependencyLink();
+        depSpecToIdea.setDependency(idea);
+        spec.getDependencies().add(depSpecToIdea);
 
         Task development = ProjectmgmtFactory.eINSTANCE.createTask();
         development.setName(DEVELOPMENT);
         development.setStartTime(Instant.parse(DATE_2023_12_13T08_30_00Z));
         development.setEndTime(Instant.parse(DATE_2023_12_16T17_30_00Z));
-        development.getDependencies().add(spec);
+
+        DependencyLink depDevelopmentToSpec = ProjectmgmtFactory.eINSTANCE.createDependencyLink();
+        depDevelopmentToSpec.setDependency(spec);
+        development.getDependencies().add(depDevelopmentToSpec);
 
         Task codeDev = ProjectmgmtFactory.eINSTANCE.createTask();
         codeDev.setName(CODE_DEVELOPMENT);
@@ -401,6 +433,7 @@ public class ProjectManagementSampleBuilder {
         Project project = ProjectmgmtFactory.eINSTANCE.createProject();
         project.setName("My project");
         Workpackage workpackage = ProjectmgmtFactory.eINSTANCE.createWorkpackage();
+        workpackage.setCalculationOption(TaskTimeBoundariesConstraint.START_END);
         workpackage.setName(MAIN_WORKPACKAGE);
         WorkpackageArtefact workpackageArtefact = ProjectmgmtFactory.eINSTANCE.createWorkpackageArtefact();
         workpackageArtefact.setName("New Workpackage Artefact");

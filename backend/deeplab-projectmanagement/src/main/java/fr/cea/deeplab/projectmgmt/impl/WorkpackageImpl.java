@@ -12,10 +12,12 @@
  */
 package fr.cea.deeplab.projectmgmt.impl;
 
+import fr.cea.deeplab.projectmgmt.DependencyLink;
 import fr.cea.deeplab.projectmgmt.Objective;
 import fr.cea.deeplab.projectmgmt.Person;
 import fr.cea.deeplab.projectmgmt.ProjectmgmtPackage;
 import fr.cea.deeplab.projectmgmt.Task;
+import fr.cea.deeplab.projectmgmt.TaskTimeBoundariesConstraint;
 import fr.cea.deeplab.projectmgmt.Workpackage;
 import fr.cea.deeplab.projectmgmt.WorkpackageArtefact;
 
@@ -39,6 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getDependencies <em>Dependencies</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getName <em>Name</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getDescription <em>Description</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getStartDate <em>Start Date</em>}</li>
@@ -50,11 +53,23 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getOwnedTasks <em>Owned Tasks</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getOwnedObjectives <em>Owned Objectives</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getProgress <em>Progress</em>}</li>
+ * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getCalculationOption <em>Calculation Option</em>}</li>
+ * <li>{@link fr.cea.deeplab.projectmgmt.impl.WorkpackageImpl#getDuration <em>Duration</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Workpackage {
+    /**
+     * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getDependencies()
+     * @generated
+     * @ordered
+     */
+    protected EList<DependencyLink> dependencies;
+
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -226,6 +241,46 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
     protected int progress = PROGRESS_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getCalculationOption() <em>Calculation Option</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getCalculationOption()
+     * @generated
+     * @ordered
+     */
+    protected static final TaskTimeBoundariesConstraint CALCULATION_OPTION_EDEFAULT = TaskTimeBoundariesConstraint.START_END;
+
+    /**
+     * The cached value of the '{@link #getCalculationOption() <em>Calculation Option</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getCalculationOption()
+     * @generated
+     * @ordered
+     */
+    protected TaskTimeBoundariesConstraint calculationOption = CALCULATION_OPTION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getDuration() <em>Duration</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDuration()
+     * @generated
+     * @ordered
+     */
+    protected static final int DURATION_EDEFAULT = 0;
+
+    /**
+     * The cached value of the '{@link #getDuration() <em>Duration</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDuration()
+     * @generated
+     * @ordered
+     */
+    protected int duration = DURATION_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -242,6 +297,19 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
     @Override
     protected EClass eStaticClass() {
         return ProjectmgmtPackage.Literals.WORKPACKAGE;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EList<DependencyLink> getDependencies() {
+        if (this.dependencies == null) {
+            this.dependencies = new EObjectContainmentEList<>(DependencyLink.class, this, ProjectmgmtPackage.WORKPACKAGE__DEPENDENCIES);
+        }
+        return this.dependencies;
     }
 
     /**
@@ -480,8 +548,56 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
      * @generated
      */
     @Override
+    public TaskTimeBoundariesConstraint getCalculationOption() {
+        return this.calculationOption;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setCalculationOption(TaskTimeBoundariesConstraint newCalculationOption) {
+        TaskTimeBoundariesConstraint oldCalculationOption = this.calculationOption;
+        this.calculationOption = newCalculationOption == null ? CALCULATION_OPTION_EDEFAULT : newCalculationOption;
+        if (this.eNotificationRequired())
+            this.eNotify(new ENotificationImpl(this, Notification.SET, ProjectmgmtPackage.WORKPACKAGE__CALCULATION_OPTION, oldCalculationOption, this.calculationOption));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int getDuration() {
+        return this.duration;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDuration(int newDuration) {
+        int oldDuration = this.duration;
+        this.duration = newDuration;
+        if (this.eNotificationRequired())
+            this.eNotify(new ENotificationImpl(this, Notification.SET, ProjectmgmtPackage.WORKPACKAGE__DURATION, oldDuration, this.duration));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
+            case ProjectmgmtPackage.WORKPACKAGE__DEPENDENCIES:
+                return ((InternalEList<?>) this.getDependencies()).basicRemove(otherEnd, msgs);
             case ProjectmgmtPackage.WORKPACKAGE__OUTPUTS:
                 return ((InternalEList<?>) this.getOutputs()).basicRemove(otherEnd, msgs);
             case ProjectmgmtPackage.WORKPACKAGE__OWNED_TASKS:
@@ -501,6 +617,8 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+            case ProjectmgmtPackage.WORKPACKAGE__DEPENDENCIES:
+                return this.getDependencies();
             case ProjectmgmtPackage.WORKPACKAGE__NAME:
                 return this.getName();
             case ProjectmgmtPackage.WORKPACKAGE__DESCRIPTION:
@@ -525,6 +643,10 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
                 return this.getOwnedObjectives();
             case ProjectmgmtPackage.WORKPACKAGE__PROGRESS:
                 return this.getProgress();
+            case ProjectmgmtPackage.WORKPACKAGE__CALCULATION_OPTION:
+                return this.getCalculationOption();
+            case ProjectmgmtPackage.WORKPACKAGE__DURATION:
+                return this.getDuration();
             default:
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -539,6 +661,10 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+            case ProjectmgmtPackage.WORKPACKAGE__DEPENDENCIES:
+                this.getDependencies().clear();
+                this.getDependencies().addAll((Collection<? extends DependencyLink>) newValue);
+                return;
             case ProjectmgmtPackage.WORKPACKAGE__NAME:
                 this.setName((String) newValue);
                 return;
@@ -576,6 +702,12 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
             case ProjectmgmtPackage.WORKPACKAGE__PROGRESS:
                 this.setProgress((Integer) newValue);
                 return;
+            case ProjectmgmtPackage.WORKPACKAGE__CALCULATION_OPTION:
+                this.setCalculationOption((TaskTimeBoundariesConstraint) newValue);
+                return;
+            case ProjectmgmtPackage.WORKPACKAGE__DURATION:
+                this.setDuration((Integer) newValue);
+                return;
             default:
                 super.eSet(featureID, newValue);
                 return;
@@ -590,6 +722,9 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+            case ProjectmgmtPackage.WORKPACKAGE__DEPENDENCIES:
+                this.getDependencies().clear();
+                return;
             case ProjectmgmtPackage.WORKPACKAGE__NAME:
                 this.setName(NAME_EDEFAULT);
                 return;
@@ -623,6 +758,12 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
             case ProjectmgmtPackage.WORKPACKAGE__PROGRESS:
                 this.setProgress(PROGRESS_EDEFAULT);
                 return;
+            case ProjectmgmtPackage.WORKPACKAGE__CALCULATION_OPTION:
+                this.setCalculationOption(CALCULATION_OPTION_EDEFAULT);
+                return;
+            case ProjectmgmtPackage.WORKPACKAGE__DURATION:
+                this.setDuration(DURATION_EDEFAULT);
+                return;
             default:
                 super.eUnset(featureID);
                 return;
@@ -637,6 +778,8 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+            case ProjectmgmtPackage.WORKPACKAGE__DEPENDENCIES:
+                return this.dependencies != null && !this.dependencies.isEmpty();
             case ProjectmgmtPackage.WORKPACKAGE__NAME:
                 return NAME_EDEFAULT == null ? this.name != null : !NAME_EDEFAULT.equals(this.name);
             case ProjectmgmtPackage.WORKPACKAGE__DESCRIPTION:
@@ -659,6 +802,10 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
                 return this.ownedObjectives != null && !this.ownedObjectives.isEmpty();
             case ProjectmgmtPackage.WORKPACKAGE__PROGRESS:
                 return this.progress != PROGRESS_EDEFAULT;
+            case ProjectmgmtPackage.WORKPACKAGE__CALCULATION_OPTION:
+                return this.calculationOption != CALCULATION_OPTION_EDEFAULT;
+            case ProjectmgmtPackage.WORKPACKAGE__DURATION:
+                return this.duration != DURATION_EDEFAULT;
             default:
                 return super.eIsSet(featureID);
         }
@@ -687,6 +834,10 @@ public class WorkpackageImpl extends MinimalEObjectImpl.Container implements Wor
         result.append(this.effort);
         result.append(", progress: ");
         result.append(this.progress);
+        result.append(", calculationOption: ");
+        result.append(this.calculationOption);
+        result.append(", duration: ");
+        result.append(this.duration);
         result.append(')');
         return result.toString();
     }

@@ -12,14 +12,19 @@
  */
 package fr.cea.deeplab.projectmgmt.impl;
 
+import fr.cea.deeplab.projectmgmt.Dependency;
+import fr.cea.deeplab.projectmgmt.DependencyLink;
 import fr.cea.deeplab.projectmgmt.ProjectmgmtPackage;
 import fr.cea.deeplab.projectmgmt.Task;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Task</b></em>'. <!-- end-user-doc -->
@@ -34,14 +39,14 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class TaskImpl extends AbstractTaskImpl implements Task {
     /**
-     * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' containment reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      *
      * @see #getDependencies()
      * @generated
      * @ordered
      */
-    protected EList<Task> dependencies;
+    protected EList<DependencyLink> dependencies;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -68,11 +73,26 @@ public class TaskImpl extends AbstractTaskImpl implements Task {
      * @generated
      */
     @Override
-    public EList<Task> getDependencies() {
+    public EList<DependencyLink> getDependencies() {
         if (this.dependencies == null) {
-            this.dependencies = new EObjectResolvingEList<>(Task.class, this, ProjectmgmtPackage.TASK__DEPENDENCIES);
+            this.dependencies = new EObjectContainmentEList<>(DependencyLink.class, this, ProjectmgmtPackage.TASK__DEPENDENCIES);
         }
         return this.dependencies;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+            case ProjectmgmtPackage.TASK__DEPENDENCIES:
+                return ((InternalEList<?>) this.getDependencies()).basicRemove(otherEnd, msgs);
+            default:
+                return super.eInverseRemove(otherEnd, featureID, msgs);
+        }
     }
 
     /**
@@ -101,7 +121,7 @@ public class TaskImpl extends AbstractTaskImpl implements Task {
         switch (featureID) {
             case ProjectmgmtPackage.TASK__DEPENDENCIES:
                 this.getDependencies().clear();
-                this.getDependencies().addAll((Collection<? extends Task>) newValue);
+                this.getDependencies().addAll((Collection<? extends DependencyLink>) newValue);
                 return;
             default:
                 super.eSet(featureID, newValue);
@@ -139,6 +159,42 @@ public class TaskImpl extends AbstractTaskImpl implements Task {
             default:
                 return super.eIsSet(featureID);
         }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == Dependency.class) {
+            switch (derivedFeatureID) {
+                case ProjectmgmtPackage.TASK__DEPENDENCIES:
+                    return ProjectmgmtPackage.DEPENDENCY__DEPENDENCIES;
+                default:
+                    return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == Dependency.class) {
+            switch (baseFeatureID) {
+                case ProjectmgmtPackage.DEPENDENCY__DEPENDENCIES:
+                    return ProjectmgmtPackage.TASK__DEPENDENCIES;
+                default:
+                    return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
 } // TaskImpl

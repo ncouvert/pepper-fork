@@ -28,7 +28,6 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
-import java.util.Objects;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -1550,6 +1549,7 @@ public class ProjectImpl extends MinimalEObjectImpl.Container implements Project
                 return;
             default:
                 super.eSet(featureID, newValue);
+                return;
         }
     }
 
@@ -1583,7 +1583,7 @@ public class ProjectImpl extends MinimalEObjectImpl.Container implements Project
                 this.setDescription(DESCRIPTION_EDEFAULT);
                 return;
             case ProjectmgmtPackage.PROJECT__LEADING_UNIT:
-                this.setLeadingUnit(null);
+                this.setLeadingUnit((InternalStakeholder) null);
                 return;
             case ProjectmgmtPackage.PROJECT__PARTICIPANT_UNITS:
                 this.getParticipantUnits().clear();
@@ -1604,7 +1604,7 @@ public class ProjectImpl extends MinimalEObjectImpl.Container implements Project
                 this.getPartners().clear();
                 return;
             case ProjectmgmtPackage.PROJECT__LEADER:
-                this.setLeader(null);
+                this.setLeader((Person) null);
                 return;
             case ProjectmgmtPackage.PROJECT__MEMBERS:
                 this.getMembers().clear();
@@ -1653,6 +1653,7 @@ public class ProjectImpl extends MinimalEObjectImpl.Container implements Project
                 return;
             default:
                 super.eUnset(featureID);
+                return;
         }
     }
 
@@ -1665,7 +1666,7 @@ public class ProjectImpl extends MinimalEObjectImpl.Container implements Project
     public boolean eIsSet(int featureID) {
         switch (featureID) {
             case ProjectmgmtPackage.PROJECT__NAME:
-                return !Objects.equals(NAME_EDEFAULT, this.name);
+                return NAME_EDEFAULT == null ? this.name != null : !NAME_EDEFAULT.equals(this.name);
             case ProjectmgmtPackage.PROJECT__OWNED_WORKPACKAGES:
                 return this.ownedWorkpackages != null && !this.ownedWorkpackages.isEmpty();
             case ProjectmgmtPackage.PROJECT__OWNED_OBJECTIVES:
@@ -1675,17 +1676,18 @@ public class ProjectImpl extends MinimalEObjectImpl.Container implements Project
             case ProjectmgmtPackage.PROJECT__OWNED_RISKS:
                 return this.ownedRisks != null && !this.ownedRisks.isEmpty();
             case ProjectmgmtPackage.PROJECT__REFERENCE:
-                return !Objects.equals(REFERENCE_EDEFAULT, this.reference);
+                return REFERENCE_EDEFAULT == null ? this.reference != null : !REFERENCE_EDEFAULT.equals(this.reference);
             case ProjectmgmtPackage.PROJECT__DESCRIPTION:
-                return !Objects.equals(DESCRIPTION_EDEFAULT, this.description);
+                return DESCRIPTION_EDEFAULT == null ? this.description != null : !DESCRIPTION_EDEFAULT.equals(this.description);
             case ProjectmgmtPackage.PROJECT__LEADING_UNIT:
                 return this.leadingUnit != null;
             case ProjectmgmtPackage.PROJECT__PARTICIPANT_UNITS:
                 return this.participantUnits != null && !this.participantUnits.isEmpty();
             case ProjectmgmtPackage.PROJECT__PLANNIFIED_CLIENT_COPIL_MEETINGS:
-                return !Objects.equals(PLANNIFIED_CLIENT_COPIL_MEETINGS_EDEFAULT, this.plannifiedClientCopilMeetings);
+                return PLANNIFIED_CLIENT_COPIL_MEETINGS_EDEFAULT == null ? this.plannifiedClientCopilMeetings != null
+                        : !PLANNIFIED_CLIENT_COPIL_MEETINGS_EDEFAULT.equals(this.plannifiedClientCopilMeetings);
             case ProjectmgmtPackage.PROJECT__MAIN_PROGRAM_BRICK:
-                return !Objects.equals(MAIN_PROGRAM_BRICK_EDEFAULT, this.mainProgramBrick);
+                return MAIN_PROGRAM_BRICK_EDEFAULT == null ? this.mainProgramBrick != null : !MAIN_PROGRAM_BRICK_EDEFAULT.equals(this.mainProgramBrick);
             case ProjectmgmtPackage.PROJECT__STATE:
                 return this.state != STATE_EDEFAULT;
             case ProjectmgmtPackage.PROJECT__CLIENTS:
@@ -1699,35 +1701,35 @@ public class ProjectImpl extends MinimalEObjectImpl.Container implements Project
             case ProjectmgmtPackage.PROJECT__MEMBERS:
                 return this.members != null && !this.members.isEmpty();
             case ProjectmgmtPackage.PROJECT__IS_SENSITIVE:
-                return !Objects.equals(IS_SENSITIVE_EDEFAULT, this.isSensitive);
+                return IS_SENSITIVE_EDEFAULT == null ? this.isSensitive != null : !IS_SENSITIVE_EDEFAULT.equals(this.isSensitive);
             case ProjectmgmtPackage.PROJECT__CONTRACTUAL_START_DATE:
-                return !Objects.equals(CONTRACTUAL_START_DATE_EDEFAULT, this.contractualStartDate);
+                return CONTRACTUAL_START_DATE_EDEFAULT == null ? this.contractualStartDate != null : !CONTRACTUAL_START_DATE_EDEFAULT.equals(this.contractualStartDate);
             case ProjectmgmtPackage.PROJECT__DURATION:
-                return !Objects.equals(DURATION_EDEFAULT, this.duration);
+                return DURATION_EDEFAULT == null ? this.duration != null : !DURATION_EDEFAULT.equals(this.duration);
             case ProjectmgmtPackage.PROJECT__CONTRACTUAL_END_DATE:
-                return !Objects.equals(CONTRACTUAL_END_DATE_EDEFAULT, this.contractualEndDate);
+                return CONTRACTUAL_END_DATE_EDEFAULT == null ? this.contractualEndDate != null : !CONTRACTUAL_END_DATE_EDEFAULT.equals(this.contractualEndDate);
             case ProjectmgmtPackage.PROJECT__EFFECTIVE_START_DATE:
-                return !Objects.equals(EFFECTIVE_START_DATE_EDEFAULT, this.effectiveStartDate);
+                return EFFECTIVE_START_DATE_EDEFAULT == null ? this.effectiveStartDate != null : !EFFECTIVE_START_DATE_EDEFAULT.equals(this.effectiveStartDate);
             case ProjectmgmtPackage.PROJECT__EFFECTIVE_END_DATE:
-                return !Objects.equals(EFFECTIVE_END_DATE_EDEFAULT, this.effectiveEndDate);
+                return EFFECTIVE_END_DATE_EDEFAULT == null ? this.effectiveEndDate != null : !EFFECTIVE_END_DATE_EDEFAULT.equals(this.effectiveEndDate);
             case ProjectmgmtPackage.PROJECT__CONTRACT_TERM_EXTENSION:
-                return !Objects.equals(CONTRACT_TERM_EXTENSION_EDEFAULT, this.contractTermExtension);
+                return CONTRACT_TERM_EXTENSION_EDEFAULT == null ? this.contractTermExtension != null : !CONTRACT_TERM_EXTENSION_EDEFAULT.equals(this.contractTermExtension);
             case ProjectmgmtPackage.PROJECT__GLOBAL_COST:
-                return !Objects.equals(GLOBAL_COST_EDEFAULT, this.globalCost);
+                return GLOBAL_COST_EDEFAULT == null ? this.globalCost != null : !GLOBAL_COST_EDEFAULT.equals(this.globalCost);
             case ProjectmgmtPackage.PROJECT__FUNDING_RATE:
-                return !Objects.equals(FUNDING_RATE_EDEFAULT, this.fundingRate);
+                return FUNDING_RATE_EDEFAULT == null ? this.fundingRate != null : !FUNDING_RATE_EDEFAULT.equals(this.fundingRate);
             case ProjectmgmtPackage.PROJECT__FUNDING:
                 return FUNDING_EDEFAULT == null ? this.getFunding() != null : !FUNDING_EDEFAULT.equals(this.getFunding());
             case ProjectmgmtPackage.PROJECT__MANPOWER:
-                return !Objects.equals(MANPOWER_EDEFAULT, this.manpower);
+                return MANPOWER_EDEFAULT == null ? this.manpower != null : !MANPOWER_EDEFAULT.equals(this.manpower);
             case ProjectmgmtPackage.PROJECT__EOTP:
-                return !Objects.equals(EOTP_EDEFAULT, this.eOTP);
+                return EOTP_EDEFAULT == null ? this.eOTP != null : !EOTP_EDEFAULT.equals(this.eOTP);
             case ProjectmgmtPackage.PROJECT__STATISTIC_ORDER:
-                return !Objects.equals(STATISTIC_ORDER_EDEFAULT, this.statisticOrder);
+                return STATISTIC_ORDER_EDEFAULT == null ? this.statisticOrder != null : !STATISTIC_ORDER_EDEFAULT.equals(this.statisticOrder);
             case ProjectmgmtPackage.PROJECT__INTERNAL_NEED:
-                return !Objects.equals(INTERNAL_NEED_EDEFAULT, this.internalNeed);
+                return INTERNAL_NEED_EDEFAULT == null ? this.internalNeed != null : !INTERNAL_NEED_EDEFAULT.equals(this.internalNeed);
             case ProjectmgmtPackage.PROJECT__CLIENT_NEED:
-                return !Objects.equals(CLIENT_NEED_EDEFAULT, this.clientNeed);
+                return CLIENT_NEED_EDEFAULT == null ? this.clientNeed != null : !CLIENT_NEED_EDEFAULT.equals(this.clientNeed);
             default:
                 return super.eIsSet(featureID);
         }
@@ -1743,48 +1745,49 @@ public class ProjectImpl extends MinimalEObjectImpl.Container implements Project
         if (this.eIsProxy())
             return super.toString();
 
-        String result = super.toString() + " (name: "
-                + this.name
-                + ", reference: "
-                + this.reference
-                + ", description: "
-                + this.description
-                + ", plannifiedClientCopilMeetings: "
-                + this.plannifiedClientCopilMeetings
-                + ", mainProgramBrick: "
-                + this.mainProgramBrick
-                + ", state: "
-                + this.state
-                + ", isSensitive: "
-                + this.isSensitive
-                + ", contractualStartDate: "
-                + this.contractualStartDate
-                + ", duration: "
-                + this.duration
-                + ", contractualEndDate: "
-                + this.contractualEndDate
-                + ", effectiveStartDate: "
-                + this.effectiveStartDate
-                + ", effectiveEndDate: "
-                + this.effectiveEndDate
-                + ", contractTermExtension: "
-                + this.contractTermExtension
-                + ", globalCost: "
-                + this.globalCost
-                + ", fundingRate: "
-                + this.fundingRate
-                + ", manpower: "
-                + this.manpower
-                + ", eOTP: "
-                + this.eOTP
-                + ", statisticOrder: "
-                + this.statisticOrder
-                + ", internalNeed: "
-                + this.internalNeed
-                + ", clientNeed: "
-                + this.clientNeed
-                + ')';
-        return result;
+        StringBuilder result = new StringBuilder(super.toString());
+        result.append(" (name: ");
+        result.append(this.name);
+        result.append(", reference: ");
+        result.append(this.reference);
+        result.append(", description: ");
+        result.append(this.description);
+        result.append(", plannifiedClientCopilMeetings: ");
+        result.append(this.plannifiedClientCopilMeetings);
+        result.append(", mainProgramBrick: ");
+        result.append(this.mainProgramBrick);
+        result.append(", state: ");
+        result.append(this.state);
+        result.append(", isSensitive: ");
+        result.append(this.isSensitive);
+        result.append(", contractualStartDate: ");
+        result.append(this.contractualStartDate);
+        result.append(", duration: ");
+        result.append(this.duration);
+        result.append(", contractualEndDate: ");
+        result.append(this.contractualEndDate);
+        result.append(", effectiveStartDate: ");
+        result.append(this.effectiveStartDate);
+        result.append(", effectiveEndDate: ");
+        result.append(this.effectiveEndDate);
+        result.append(", contractTermExtension: ");
+        result.append(this.contractTermExtension);
+        result.append(", globalCost: ");
+        result.append(this.globalCost);
+        result.append(", fundingRate: ");
+        result.append(this.fundingRate);
+        result.append(", manpower: ");
+        result.append(this.manpower);
+        result.append(", eOTP: ");
+        result.append(this.eOTP);
+        result.append(", statisticOrder: ");
+        result.append(this.statisticOrder);
+        result.append(", internalNeed: ");
+        result.append(this.internalNeed);
+        result.append(", clientNeed: ");
+        result.append(this.clientNeed);
+        result.append(')');
+        return result.toString();
     }
 
 } // ProjectImpl

@@ -15,6 +15,8 @@ package fr.cea.deeplab.projectmgmt.impl;
 import static fr.cea.deeplab.projectmgmt.ProjectmgmtPackage.RESOURCE;
 
 import fr.cea.deeplab.projectmgmt.AbstractTask;
+import fr.cea.deeplab.projectmgmt.Dependency;
+import fr.cea.deeplab.projectmgmt.DependencyLink;
 import fr.cea.deeplab.projectmgmt.ExternalStakeholder;
 import fr.cea.deeplab.projectmgmt.InternalStakeholder;
 import fr.cea.deeplab.projectmgmt.KeyResult;
@@ -30,9 +32,11 @@ import fr.cea.deeplab.projectmgmt.ResourceFolder;
 import fr.cea.deeplab.projectmgmt.Risk;
 import fr.cea.deeplab.projectmgmt.RiskKind;
 import fr.cea.deeplab.projectmgmt.RiskState;
+import fr.cea.deeplab.projectmgmt.StartOrEnd;
 import fr.cea.deeplab.projectmgmt.TagFolder;
 import fr.cea.deeplab.projectmgmt.Task;
 import fr.cea.deeplab.projectmgmt.TaskTag;
+import fr.cea.deeplab.projectmgmt.TaskTimeBoundariesConstraint;
 import fr.cea.deeplab.projectmgmt.Team;
 import fr.cea.deeplab.projectmgmt.Workpackage;
 import fr.cea.deeplab.projectmgmt.WorkpackageArtefact;
@@ -179,7 +183,35 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
      *
      * @generated
      */
+    private EClass dependencyLinkEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass dependencyEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
     private EEnum workpackageArtefactNatureEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EEnum startOrEndEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EEnum taskTimeBoundariesConstraintEEnum = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -584,6 +616,26 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
      * @generated
      */
     @Override
+    public EAttribute getAbstractTask_CalculationOption() {
+        return (EAttribute) this.abstractTaskEClass.getEStructuralFeatures().get(10);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getAbstractTask_Duration() {
+        return (EAttribute) this.abstractTaskEClass.getEStructuralFeatures().get(11);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getTagFolder() {
         return this.tagFolderEClass;
     }
@@ -656,16 +708,6 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
     @Override
     public EClass getTask() {
         return this.taskEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EReference getTask_Dependencies() {
-        return (EReference) this.taskEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -1154,6 +1196,26 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
      * @generated
      */
     @Override
+    public EAttribute getWorkpackage_CalculationOption() {
+        return (EAttribute) this.workpackageEClass.getEStructuralFeatures().get(11);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getWorkpackage_Duration() {
+        return (EAttribute) this.workpackageEClass.getEStructuralFeatures().get(12);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getWorkpackageArtefact() {
         return this.workpackageArtefactEClass;
     }
@@ -1354,8 +1416,98 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
      * @generated
      */
     @Override
+    public EClass getDependencyLink() {
+        return this.dependencyLinkEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDependencyLink_Target() {
+        return (EAttribute) this.dependencyLinkEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDependencyLink_Source() {
+        return (EAttribute) this.dependencyLinkEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDependencyLink_Dependency() {
+        return (EReference) this.dependencyLinkEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDependencyLink_Duration() {
+        return (EAttribute) this.dependencyLinkEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EClass getDependency() {
+        return this.dependencyEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EReference getDependency_Dependencies() {
+        return (EReference) this.dependencyEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EEnum getWorkpackageArtefactNature() {
         return this.workpackageArtefactNatureEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EEnum getStartOrEnd() {
+        return this.startOrEndEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EEnum getTaskTimeBoundariesConstraint() {
+        return this.taskTimeBoundariesConstraintEEnum;
     }
 
     /**
@@ -1474,6 +1626,8 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
         this.createEReference(this.abstractTaskEClass, ABSTRACT_TASK__ASSIGNED_PERSONS);
         this.createEReference(this.abstractTaskEClass, ABSTRACT_TASK__ASSIGNED_TEAMS);
         this.createEReference(this.abstractTaskEClass, ABSTRACT_TASK__SUB_TASKS);
+        this.createEAttribute(this.abstractTaskEClass, ABSTRACT_TASK__CALCULATION_OPTION);
+        this.createEAttribute(this.abstractTaskEClass, ABSTRACT_TASK__DURATION);
 
         this.tagFolderEClass = this.createEClass(TAG_FOLDER);
         this.createEAttribute(this.tagFolderEClass, TAG_FOLDER__NAME);
@@ -1485,7 +1639,6 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
         this.createEAttribute(this.taskTagEClass, TASK_TAG__SUFFIX);
 
         this.taskEClass = this.createEClass(TASK);
-        this.createEReference(this.taskEClass, TASK__DEPENDENCIES);
 
         this.objectiveEClass = this.createEClass(OBJECTIVE);
         this.createEReference(this.objectiveEClass, OBJECTIVE__OWNED_KEY_RESULTS);
@@ -1538,6 +1691,8 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
         this.createEReference(this.workpackageEClass, WORKPACKAGE__OWNED_TASKS);
         this.createEReference(this.workpackageEClass, WORKPACKAGE__OWNED_OBJECTIVES);
         this.createEAttribute(this.workpackageEClass, WORKPACKAGE__PROGRESS);
+        this.createEAttribute(this.workpackageEClass, WORKPACKAGE__CALCULATION_OPTION);
+        this.createEAttribute(this.workpackageEClass, WORKPACKAGE__DURATION);
 
         this.workpackageArtefactEClass = this.createEClass(WORKPACKAGE_ARTEFACT);
         this.createEAttribute(this.workpackageArtefactEClass, WORKPACKAGE_ARTEFACT__NAME);
@@ -1561,15 +1716,26 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
         this.createEAttribute(this.riskEClass, RISK__STATE);
         this.createEReference(this.riskEClass, RISK__WORKPACKAGES);
 
+        this.dependencyLinkEClass = this.createEClass(DEPENDENCY_LINK);
+        this.createEAttribute(this.dependencyLinkEClass, DEPENDENCY_LINK__TARGET);
+        this.createEAttribute(this.dependencyLinkEClass, DEPENDENCY_LINK__SOURCE);
+        this.createEReference(this.dependencyLinkEClass, DEPENDENCY_LINK__DEPENDENCY);
+        this.createEAttribute(this.dependencyLinkEClass, DEPENDENCY_LINK__DURATION);
+
+        this.dependencyEClass = this.createEClass(DEPENDENCY);
+        this.createEReference(this.dependencyEClass, DEPENDENCY__DEPENDENCIES);
+
         // Create enums
-        this.workpackageArtefactNatureEEnum = this.createEEnum(WORKPACKAGE_ARTEFACT_NATURE);
+        this.projectStateEEnum = this.createEEnum(PROJECT_STATE);
         this.riskKindEEnum = this.createEEnum(RISK_KIND);
         this.riskStateEEnum = this.createEEnum(RISK_STATE);
-        this.projectStateEEnum = this.createEEnum(PROJECT_STATE);
+        this.workpackageArtefactNatureEEnum = this.createEEnum(WORKPACKAGE_ARTEFACT_NATURE);
+        this.startOrEndEEnum = this.createEEnum(START_OR_END);
+        this.taskTimeBoundariesConstraintEEnum = this.createEEnum(TASK_TIME_BOUNDARIES_CONSTRAINT);
 
         // Create data types
-        this.instantEDataType = this.createEDataType(INSTANT);
         this.dateEDataType = this.createEDataType(DATE);
+        this.instantEDataType = this.createEDataType(INSTANT);
     }
 
     /**
@@ -1605,8 +1771,10 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
         this.externalStakeholderEClass.getESuperTypes().add(this.getResource());
         this.personEClass.getESuperTypes().add(this.getResource());
         this.taskEClass.getESuperTypes().add(this.getAbstractTask());
+        this.taskEClass.getESuperTypes().add(this.getDependency());
         this.objectiveEClass.getESuperTypes().add(this.getAbstractTask());
         this.keyResultEClass.getESuperTypes().add(this.getAbstractTask());
+        this.workpackageEClass.getESuperTypes().add(this.getDependency());
 
         // Initialize classes and features; add operations and parameters
         this.initEClass(this.organizationEClass, Organization.class, "Organization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1668,6 +1836,10 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         this.initEReference(this.getAbstractTask_SubTasks(), this.getTask(), null, "subTasks", null, 0, -1, AbstractTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEAttribute(this.getAbstractTask_CalculationOption(), this.getTaskTimeBoundariesConstraint(), "calculationOption", "START_END", 0, 1, AbstractTask.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEAttribute(this.getAbstractTask_Duration(), this.ecorePackage.getEInt(), "duration", null, 0, 1, AbstractTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         this.initEClass(this.tagFolderEClass, TagFolder.class, "TagFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEAttribute(this.getTagFolder_Name(), this.ecorePackage.getEString(), "name", null, 0, 1, TagFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
@@ -1684,8 +1856,6 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         this.initEClass(this.taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        this.initEReference(this.getTask_Dependencies(), this.getTask(), null, "dependencies", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         this.initEClass(this.objectiveEClass, Objective.class, "Objective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEReference(this.getObjective_OwnedKeyResults(), this.getKeyResult(), null, "ownedKeyResults", null, 0, -1, Objective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
@@ -1782,6 +1952,10 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
                 IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         this.initEAttribute(this.getWorkpackage_Progress(), this.ecorePackage.getEInt(), "progress", null, 0, 1, Workpackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEAttribute(this.getWorkpackage_CalculationOption(), this.getTaskTimeBoundariesConstraint(), "calculationOption", "START_END", 0, 1, Workpackage.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEAttribute(this.getWorkpackage_Duration(), this.ecorePackage.getEInt(), "duration", null, 0, 1, Workpackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         this.initEClass(this.workpackageArtefactEClass, WorkpackageArtefact.class, "WorkpackageArtefact", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         this.initEAttribute(this.getWorkpackageArtefact_Name(), this.ecorePackage.getEString(), "name", null, 0, 1, WorkpackageArtefact.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
@@ -1823,16 +1997,26 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
         this.initEReference(this.getRisk_Workpackages(), this.getWorkpackage(), null, "workpackages", null, 0, -1, Risk.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+        this.initEClass(this.dependencyLinkEClass, DependencyLink.class, "DependencyLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        this.initEAttribute(this.getDependencyLink_Target(), this.getStartOrEnd(), "target", "START", 0, 1, DependencyLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEAttribute(this.getDependencyLink_Source(), this.getStartOrEnd(), "source", "END", 0, 1, DependencyLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEReference(this.getDependencyLink_Dependency(), this.getDependency(), null, "dependency", null, 1, 1, DependencyLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
+                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        this.initEAttribute(this.getDependencyLink_Duration(), this.ecorePackage.getEInt(), "duration", null, 0, 1, DependencyLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        this.initEClass(this.dependencyEClass, Dependency.class, "Dependency", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        this.initEReference(this.getDependency_Dependencies(), this.getDependencyLink(), null, "dependencies", null, 0, -1, Dependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+                !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
         // Initialize enums and add enum literals
-        this.initEEnum(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.class, "WorkpackageArtefactNature");
-        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.DELIVRABLE);
-        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.DECISIONAL);
-        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.PROJECT_REVIEW);
-        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.ACTION);
-        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.INVOICING);
-        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.EXPENSE_STATEMENT);
-        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.CLIENT_SATISFACTION);
-        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.OTHER);
+        this.initEEnum(this.projectStateEEnum, ProjectState.class, "ProjectState");
+        this.addEEnumLiteral(this.projectStateEEnum, ProjectState.ON_GOING);
+        this.addEEnumLiteral(this.projectStateEEnum, ProjectState.UNDER_INSTRUCTION);
+        this.addEEnumLiteral(this.projectStateEEnum, ProjectState.STOP_BEFORE_TERM);
+        this.addEEnumLiteral(this.projectStateEEnum, ProjectState.COMPLETED);
 
         this.initEEnum(this.riskKindEEnum, RiskKind.class, "RiskKind");
         this.addEEnumLiteral(this.riskKindEEnum, RiskKind.MANPOWER);
@@ -1850,15 +2034,28 @@ public class ProjectmgmtPackageImpl extends EPackageImpl implements ProjectmgmtP
         this.addEEnumLiteral(this.riskStateEEnum, RiskState.STOP_BEFORE_TERM);
         this.addEEnumLiteral(this.riskStateEEnum, RiskState.COMPLETED);
 
-        this.initEEnum(this.projectStateEEnum, ProjectState.class, "ProjectState");
-        this.addEEnumLiteral(this.projectStateEEnum, ProjectState.ON_GOING);
-        this.addEEnumLiteral(this.projectStateEEnum, ProjectState.UNDER_INSTRUCTION);
-        this.addEEnumLiteral(this.projectStateEEnum, ProjectState.STOP_BEFORE_TERM);
-        this.addEEnumLiteral(this.projectStateEEnum, ProjectState.COMPLETED);
+        this.initEEnum(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.class, "WorkpackageArtefactNature");
+        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.DELIVRABLE);
+        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.DECISIONAL);
+        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.PROJECT_REVIEW);
+        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.ACTION);
+        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.INVOICING);
+        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.EXPENSE_STATEMENT);
+        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.CLIENT_SATISFACTION);
+        this.addEEnumLiteral(this.workpackageArtefactNatureEEnum, WorkpackageArtefactNature.OTHER);
+
+        this.initEEnum(this.startOrEndEEnum, StartOrEnd.class, "StartOrEnd");
+        this.addEEnumLiteral(this.startOrEndEEnum, StartOrEnd.START);
+        this.addEEnumLiteral(this.startOrEndEEnum, StartOrEnd.END);
+
+        this.initEEnum(this.taskTimeBoundariesConstraintEEnum, TaskTimeBoundariesConstraint.class, "TaskTimeBoundariesConstraint");
+        this.addEEnumLiteral(this.taskTimeBoundariesConstraintEEnum, TaskTimeBoundariesConstraint.START_END);
+        this.addEEnumLiteral(this.taskTimeBoundariesConstraintEEnum, TaskTimeBoundariesConstraint.END_DURATION);
+        this.addEEnumLiteral(this.taskTimeBoundariesConstraintEEnum, TaskTimeBoundariesConstraint.START_DURATION);
 
         // Initialize data types
-        this.initEDataType(this.instantEDataType, Instant.class, "Instant", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
         this.initEDataType(this.dateEDataType, LocalDate.class, "Date", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        this.initEDataType(this.instantEDataType, Instant.class, "Instant", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         this.createResource(eNS_URI);

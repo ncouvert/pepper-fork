@@ -17,6 +17,7 @@ import fr.cea.deeplab.projectmgmt.Person;
 import fr.cea.deeplab.projectmgmt.ProjectmgmtPackage;
 import fr.cea.deeplab.projectmgmt.Task;
 import fr.cea.deeplab.projectmgmt.TaskTag;
+import fr.cea.deeplab.projectmgmt.TaskTimeBoundariesConstraint;
 import fr.cea.deeplab.projectmgmt.Team;
 
 import java.time.Instant;
@@ -50,6 +51,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.AbstractTaskImpl#getAssignedPersons <em>Assigned Persons</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.AbstractTaskImpl#getAssignedTeams <em>Assigned Teams</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.impl.AbstractTaskImpl#getSubTasks <em>Sub Tasks</em>}</li>
+ * <li>{@link fr.cea.deeplab.projectmgmt.impl.AbstractTaskImpl#getCalculationOption <em>Calculation Option</em>}</li>
+ * <li>{@link fr.cea.deeplab.projectmgmt.impl.AbstractTaskImpl#getDuration <em>Duration</em>}</li>
  * </ul>
  *
  * @generated
@@ -216,6 +219,46 @@ public abstract class AbstractTaskImpl extends MinimalEObjectImpl.Container impl
     protected EList<Task> subTasks;
 
     /**
+     * The default value of the '{@link #getCalculationOption() <em>Calculation Option</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getCalculationOption()
+     * @generated
+     * @ordered
+     */
+    protected static final TaskTimeBoundariesConstraint CALCULATION_OPTION_EDEFAULT = TaskTimeBoundariesConstraint.START_END;
+
+    /**
+     * The cached value of the '{@link #getCalculationOption() <em>Calculation Option</em>}' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getCalculationOption()
+     * @generated
+     * @ordered
+     */
+    protected TaskTimeBoundariesConstraint calculationOption = CALCULATION_OPTION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getDuration() <em>Duration</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDuration()
+     * @generated
+     * @ordered
+     */
+    protected static final int DURATION_EDEFAULT = 0;
+
+    /**
+     * The cached value of the '{@link #getDuration() <em>Duration</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getDuration()
+     * @generated
+     * @ordered
+     */
+    protected int duration = DURATION_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -343,7 +386,7 @@ public abstract class AbstractTaskImpl extends MinimalEObjectImpl.Container impl
      */
     @Override
     public void setProgress(int newProgress) {
-        if (newProgress >=0 && newProgress <= 100) {
+        if (newProgress >= 0 && newProgress <= 100) {
             int oldProgress = this.progress;
             this.progress = newProgress;
             if (this.eNotificationRequired())
@@ -433,6 +476,52 @@ public abstract class AbstractTaskImpl extends MinimalEObjectImpl.Container impl
      * @generated
      */
     @Override
+    public TaskTimeBoundariesConstraint getCalculationOption() {
+        return this.calculationOption;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setCalculationOption(TaskTimeBoundariesConstraint newCalculationOption) {
+        TaskTimeBoundariesConstraint oldCalculationOption = this.calculationOption;
+        this.calculationOption = newCalculationOption == null ? CALCULATION_OPTION_EDEFAULT : newCalculationOption;
+        if (this.eNotificationRequired())
+            this.eNotify(new ENotificationImpl(this, Notification.SET, ProjectmgmtPackage.ABSTRACT_TASK__CALCULATION_OPTION, oldCalculationOption, this.calculationOption));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int getDuration() {
+        return this.duration;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDuration(int newDuration) {
+        int oldDuration = this.duration;
+        this.duration = newDuration;
+        if (this.eNotificationRequired())
+            this.eNotify(new ENotificationImpl(this, Notification.SET, ProjectmgmtPackage.ABSTRACT_TASK__DURATION, oldDuration, this.duration));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
             case ProjectmgmtPackage.ABSTRACT_TASK__SUB_TASKS:
@@ -470,6 +559,10 @@ public abstract class AbstractTaskImpl extends MinimalEObjectImpl.Container impl
                 return this.getAssignedTeams();
             case ProjectmgmtPackage.ABSTRACT_TASK__SUB_TASKS:
                 return this.getSubTasks();
+            case ProjectmgmtPackage.ABSTRACT_TASK__CALCULATION_OPTION:
+                return this.getCalculationOption();
+            case ProjectmgmtPackage.ABSTRACT_TASK__DURATION:
+                return this.getDuration();
             default:
                 return super.eGet(featureID, resolve, coreType);
         }
@@ -518,6 +611,12 @@ public abstract class AbstractTaskImpl extends MinimalEObjectImpl.Container impl
                 this.getSubTasks().clear();
                 this.getSubTasks().addAll((Collection<? extends Task>) newValue);
                 return;
+            case ProjectmgmtPackage.ABSTRACT_TASK__CALCULATION_OPTION:
+                this.setCalculationOption((TaskTimeBoundariesConstraint) newValue);
+                return;
+            case ProjectmgmtPackage.ABSTRACT_TASK__DURATION:
+                this.setDuration((Integer) newValue);
+                return;
             default:
                 super.eSet(featureID, newValue);
                 return;
@@ -562,6 +661,12 @@ public abstract class AbstractTaskImpl extends MinimalEObjectImpl.Container impl
             case ProjectmgmtPackage.ABSTRACT_TASK__SUB_TASKS:
                 this.getSubTasks().clear();
                 return;
+            case ProjectmgmtPackage.ABSTRACT_TASK__CALCULATION_OPTION:
+                this.setCalculationOption(CALCULATION_OPTION_EDEFAULT);
+                return;
+            case ProjectmgmtPackage.ABSTRACT_TASK__DURATION:
+                this.setDuration(DURATION_EDEFAULT);
+                return;
             default:
                 super.eUnset(featureID);
                 return;
@@ -596,6 +701,10 @@ public abstract class AbstractTaskImpl extends MinimalEObjectImpl.Container impl
                 return this.assignedTeams != null && !this.assignedTeams.isEmpty();
             case ProjectmgmtPackage.ABSTRACT_TASK__SUB_TASKS:
                 return this.subTasks != null && !this.subTasks.isEmpty();
+            case ProjectmgmtPackage.ABSTRACT_TASK__CALCULATION_OPTION:
+                return this.calculationOption != CALCULATION_OPTION_EDEFAULT;
+            case ProjectmgmtPackage.ABSTRACT_TASK__DURATION:
+                return this.duration != DURATION_EDEFAULT;
             default:
                 return super.eIsSet(featureID);
         }
@@ -624,6 +733,10 @@ public abstract class AbstractTaskImpl extends MinimalEObjectImpl.Container impl
         result.append(this.progress);
         result.append(", computeStartEndDynamically: ");
         result.append(this.computeStartEndDynamically);
+        result.append(", calculationOption: ");
+        result.append(this.calculationOption);
+        result.append(", duration: ");
+        result.append(this.duration);
         result.append(')');
         return result.toString();
     }

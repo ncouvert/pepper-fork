@@ -21,7 +21,6 @@ import fr.cea.deeplab.projectmgmt.Workpackage;
 
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Objects;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -467,6 +466,7 @@ public class RiskImpl extends MinimalEObjectImpl.Container implements Risk {
                 return;
             default:
                 super.eSet(featureID, newValue);
+                return;
         }
     }
 
@@ -491,7 +491,7 @@ public class RiskImpl extends MinimalEObjectImpl.Container implements Risk {
                 this.setAction(ACTION_EDEFAULT);
                 return;
             case ProjectmgmtPackage.RISK__RESPONSIBLE:
-                this.setResponsible(null);
+                this.setResponsible((Person) null);
                 return;
             case ProjectmgmtPackage.RISK__OPERATION_DATE:
                 this.setOperationDate(OPERATION_DATE_EDEFAULT);
@@ -504,6 +504,7 @@ public class RiskImpl extends MinimalEObjectImpl.Container implements Risk {
                 return;
             default:
                 super.eUnset(featureID);
+                return;
         }
     }
 
@@ -518,15 +519,15 @@ public class RiskImpl extends MinimalEObjectImpl.Container implements Risk {
             case ProjectmgmtPackage.RISK__KIND:
                 return this.kind != KIND_EDEFAULT;
             case ProjectmgmtPackage.RISK__DESCRIPTION:
-                return !Objects.equals(DESCRIPTION_EDEFAULT, this.description);
+                return DESCRIPTION_EDEFAULT == null ? this.description != null : !DESCRIPTION_EDEFAULT.equals(this.description);
             case ProjectmgmtPackage.RISK__CRITICITY:
-                return !Objects.equals(CRITICITY_EDEFAULT, this.criticity);
+                return CRITICITY_EDEFAULT == null ? this.criticity != null : !CRITICITY_EDEFAULT.equals(this.criticity);
             case ProjectmgmtPackage.RISK__ACTION:
-                return !Objects.equals(ACTION_EDEFAULT, this.action);
+                return ACTION_EDEFAULT == null ? this.action != null : !ACTION_EDEFAULT.equals(this.action);
             case ProjectmgmtPackage.RISK__RESPONSIBLE:
                 return this.responsible != null;
             case ProjectmgmtPackage.RISK__OPERATION_DATE:
-                return !Objects.equals(OPERATION_DATE_EDEFAULT, this.operationDate);
+                return OPERATION_DATE_EDEFAULT == null ? this.operationDate != null : !OPERATION_DATE_EDEFAULT.equals(this.operationDate);
             case ProjectmgmtPackage.RISK__STATE:
                 return this.state != STATE_EDEFAULT;
             case ProjectmgmtPackage.RISK__WORKPACKAGES:
@@ -546,20 +547,21 @@ public class RiskImpl extends MinimalEObjectImpl.Container implements Risk {
         if (this.eIsProxy())
             return super.toString();
 
-        String result = super.toString() + " (kind: "
-                + this.kind
-                + ", description: "
-                + this.description
-                + ", criticity: "
-                + this.criticity
-                + ", action: "
-                + this.action
-                + ", operationDate: "
-                + this.operationDate
-                + ", state: "
-                + this.state
-                + ')';
-        return result;
+        StringBuilder result = new StringBuilder(super.toString());
+        result.append(" (kind: ");
+        result.append(this.kind);
+        result.append(", description: ");
+        result.append(this.description);
+        result.append(", criticity: ");
+        result.append(this.criticity);
+        result.append(", action: ");
+        result.append(this.action);
+        result.append(", operationDate: ");
+        result.append(this.operationDate);
+        result.append(", state: ");
+        result.append(this.state);
+        result.append(')');
+        return result.toString();
     }
 
 } // RiskImpl

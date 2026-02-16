@@ -12,6 +12,7 @@
  *******************************************************************************/
 package fr.cea.deeplab.projectmgmt.impl;
 
+import fr.cea.deeplab.projectmgmt.DependencyLink;
 import fr.cea.deeplab.projectmgmt.ExternalStakeholder;
 import fr.cea.deeplab.projectmgmt.InternalStakeholder;
 import fr.cea.deeplab.projectmgmt.KeyResult;
@@ -26,9 +27,11 @@ import fr.cea.deeplab.projectmgmt.ResourceFolder;
 import fr.cea.deeplab.projectmgmt.Risk;
 import fr.cea.deeplab.projectmgmt.RiskKind;
 import fr.cea.deeplab.projectmgmt.RiskState;
+import fr.cea.deeplab.projectmgmt.StartOrEnd;
 import fr.cea.deeplab.projectmgmt.TagFolder;
 import fr.cea.deeplab.projectmgmt.Task;
 import fr.cea.deeplab.projectmgmt.TaskTag;
+import fr.cea.deeplab.projectmgmt.TaskTimeBoundariesConstraint;
 import fr.cea.deeplab.projectmgmt.Team;
 import fr.cea.deeplab.projectmgmt.Workpackage;
 import fr.cea.deeplab.projectmgmt.WorkpackageArtefact;
@@ -115,6 +118,8 @@ public class ProjectmgmtFactoryImpl extends EFactoryImpl implements ProjectmgmtF
                 return this.createWorkpackageArtefact();
             case ProjectmgmtPackage.RISK:
                 return this.createRisk();
+            case ProjectmgmtPackage.DEPENDENCY_LINK:
+                return this.createDependencyLink();
             default:
                 throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -128,18 +133,22 @@ public class ProjectmgmtFactoryImpl extends EFactoryImpl implements ProjectmgmtF
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
         switch (eDataType.getClassifierID()) {
-            case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT_NATURE:
-                return this.createWorkpackageArtefactNatureFromString(eDataType, initialValue);
+            case ProjectmgmtPackage.PROJECT_STATE:
+                return this.createProjectStateFromString(eDataType, initialValue);
             case ProjectmgmtPackage.RISK_KIND:
                 return this.createRiskKindFromString(eDataType, initialValue);
             case ProjectmgmtPackage.RISK_STATE:
                 return this.createRiskStateFromString(eDataType, initialValue);
-            case ProjectmgmtPackage.PROJECT_STATE:
-                return this.createProjectStateFromString(eDataType, initialValue);
-            case ProjectmgmtPackage.INSTANT:
-                return this.createInstantFromString(eDataType, initialValue);
+            case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT_NATURE:
+                return this.createWorkpackageArtefactNatureFromString(eDataType, initialValue);
+            case ProjectmgmtPackage.START_OR_END:
+                return this.createStartOrEndFromString(eDataType, initialValue);
+            case ProjectmgmtPackage.TASK_TIME_BOUNDARIES_CONSTRAINT:
+                return this.createTaskTimeBoundariesConstraintFromString(eDataType, initialValue);
             case ProjectmgmtPackage.DATE:
                 return this.createDateFromString(eDataType, initialValue);
+            case ProjectmgmtPackage.INSTANT:
+                return this.createInstantFromString(eDataType, initialValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -153,18 +162,22 @@ public class ProjectmgmtFactoryImpl extends EFactoryImpl implements ProjectmgmtF
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
         switch (eDataType.getClassifierID()) {
-            case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT_NATURE:
-                return this.convertWorkpackageArtefactNatureToString(eDataType, instanceValue);
+            case ProjectmgmtPackage.PROJECT_STATE:
+                return this.convertProjectStateToString(eDataType, instanceValue);
             case ProjectmgmtPackage.RISK_KIND:
                 return this.convertRiskKindToString(eDataType, instanceValue);
             case ProjectmgmtPackage.RISK_STATE:
                 return this.convertRiskStateToString(eDataType, instanceValue);
-            case ProjectmgmtPackage.PROJECT_STATE:
-                return this.convertProjectStateToString(eDataType, instanceValue);
-            case ProjectmgmtPackage.INSTANT:
-                return this.convertInstantToString(eDataType, instanceValue);
+            case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT_NATURE:
+                return this.convertWorkpackageArtefactNatureToString(eDataType, instanceValue);
+            case ProjectmgmtPackage.START_OR_END:
+                return this.convertStartOrEndToString(eDataType, instanceValue);
+            case ProjectmgmtPackage.TASK_TIME_BOUNDARIES_CONSTRAINT:
+                return this.convertTaskTimeBoundariesConstraintToString(eDataType, instanceValue);
             case ProjectmgmtPackage.DATE:
                 return this.convertDateToString(eDataType, instanceValue);
+            case ProjectmgmtPackage.INSTANT:
+                return this.convertInstantToString(eDataType, instanceValue);
             default:
                 throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -338,12 +351,24 @@ public class ProjectmgmtFactoryImpl extends EFactoryImpl implements ProjectmgmtF
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
+     * @generated
+     */
+    @Override
+    public DependencyLink createDependencyLink() {
+        DependencyLinkImpl dependencyLink = new DependencyLinkImpl();
+        return dependencyLink;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated NOT
      */
     public WorkpackageArtefactNature createWorkpackageArtefactNatureFromString(EDataType eDataType, String initialValue) {
         WorkpackageArtefactNature result = WorkpackageArtefactNature.get(initialValue);
-//        if (result == null)
-//            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        // if (result == null)
+        // throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
+        // eDataType.getName() + "'");
         return result;
     }
 
@@ -359,12 +384,55 @@ public class ProjectmgmtFactoryImpl extends EFactoryImpl implements ProjectmgmtF
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
+     * @generated
+     */
+    public StartOrEnd createStartOrEndFromString(EDataType eDataType, String initialValue) {
+        StartOrEnd result = StartOrEnd.get(initialValue);
+        if (result == null)
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public String convertStartOrEndToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public TaskTimeBoundariesConstraint createTaskTimeBoundariesConstraintFromString(EDataType eDataType, String initialValue) {
+        TaskTimeBoundariesConstraint result = TaskTimeBoundariesConstraint.get(initialValue);
+        if (result == null)
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public String convertTaskTimeBoundariesConstraintToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated NOT
      */
     public RiskKind createRiskKindFromString(EDataType eDataType, String initialValue) {
         RiskKind result = RiskKind.get(initialValue);
-//        if (result == null)
-//            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        // if (result == null)
+        // throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
+        // eDataType.getName() + "'");
         return result;
     }
 
@@ -384,8 +452,9 @@ public class ProjectmgmtFactoryImpl extends EFactoryImpl implements ProjectmgmtF
      */
     public RiskState createRiskStateFromString(EDataType eDataType, String initialValue) {
         RiskState result = RiskState.get(initialValue);
-//        if (result == null)
-//            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        // if (result == null)
+        // throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
+        // eDataType.getName() + "'");
         return result;
     }
 
@@ -405,8 +474,9 @@ public class ProjectmgmtFactoryImpl extends EFactoryImpl implements ProjectmgmtF
      */
     public ProjectState createProjectStateFromString(EDataType eDataType, String initialValue) {
         ProjectState result = ProjectState.get(initialValue);
-//        if (result == null)
-//            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        // if (result == null)
+        // throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" +
+        // eDataType.getName() + "'");
         return result;
     }
 

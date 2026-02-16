@@ -424,6 +424,29 @@ public class ProjectmgmtItemProviderAdapterFactory extends ProjectmgmtAdapterFac
     }
 
     /**
+     * This keeps track of the one adapter used for all {@link fr.cea.deeplab.projectmgmt.DependencyLink} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected DependencyLinkItemProvider dependencyLinkItemProvider;
+
+    /**
+     * This creates an adapter for a {@link fr.cea.deeplab.projectmgmt.DependencyLink}. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createDependencyLinkAdapter() {
+        if (this.dependencyLinkItemProvider == null) {
+            this.dependencyLinkItemProvider = new DependencyLinkItemProvider(this);
+        }
+
+        return this.dependencyLinkItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -553,6 +576,8 @@ public class ProjectmgmtItemProviderAdapterFactory extends ProjectmgmtAdapterFac
             this.workpackageArtefactItemProvider.dispose();
         if (this.riskItemProvider != null)
             this.riskItemProvider.dispose();
+        if (this.dependencyLinkItemProvider != null)
+            this.dependencyLinkItemProvider.dispose();
     }
 
 }

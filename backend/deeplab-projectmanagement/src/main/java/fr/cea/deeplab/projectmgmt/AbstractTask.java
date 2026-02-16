@@ -35,6 +35,8 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link fr.cea.deeplab.projectmgmt.AbstractTask#getAssignedPersons <em>Assigned Persons</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.AbstractTask#getAssignedTeams <em>Assigned Teams</em>}</li>
  * <li>{@link fr.cea.deeplab.projectmgmt.AbstractTask#getSubTasks <em>Sub Tasks</em>}</li>
+ * <li>{@link fr.cea.deeplab.projectmgmt.AbstractTask#getCalculationOption <em>Calculation Option</em>}</li>
+ * <li>{@link fr.cea.deeplab.projectmgmt.AbstractTask#getDuration <em>Duration</em>}</li>
  * </ul>
  *
  * @see fr.cea.deeplab.projectmgmt.ProjectmgmtPackage#getAbstractTask()
@@ -218,5 +220,53 @@ public interface AbstractTask extends EObject {
      * @generated
      */
     EList<Task> getSubTasks();
+
+    /**
+     * Returns the value of the '<em><b>Calculation Option</b></em>' attribute. The default value is
+     * <code>"START_END"</code>. The literals are from the enumeration
+     * {@link fr.cea.deeplab.projectmgmt.TaskTimeBoundariesConstraint}. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Calculation Option</em>' attribute.
+     * @see fr.cea.deeplab.projectmgmt.TaskTimeBoundariesConstraint
+     * @see #setCalculationOption(TaskTimeBoundariesConstraint)
+     * @see fr.cea.deeplab.projectmgmt.ProjectmgmtPackage#getAbstractTask_CalculationOption()
+     * @model default="START_END"
+     * @generated
+     */
+    TaskTimeBoundariesConstraint getCalculationOption();
+
+    /**
+     * Sets the value of the '{@link fr.cea.deeplab.projectmgmt.AbstractTask#getCalculationOption <em>Calculation
+     * Option</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Calculation Option</em>' attribute.
+     * @see fr.cea.deeplab.projectmgmt.TaskTimeBoundariesConstraint
+     * @see #getCalculationOption()
+     * @generated
+     */
+    void setCalculationOption(TaskTimeBoundariesConstraint value);
+
+    /**
+     * Returns the value of the '<em><b>Duration</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Duration</em>' attribute.
+     * @see #setDuration(int)
+     * @see fr.cea.deeplab.projectmgmt.ProjectmgmtPackage#getAbstractTask_Duration()
+     * @model
+     * @generated
+     */
+    int getDuration();
+
+    /**
+     * Sets the value of the '{@link fr.cea.deeplab.projectmgmt.AbstractTask#getDuration <em>Duration</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Duration</em>' attribute.
+     * @see #getDuration()
+     * @generated
+     */
+    void setDuration(int value);
 
 } // AbstractTask

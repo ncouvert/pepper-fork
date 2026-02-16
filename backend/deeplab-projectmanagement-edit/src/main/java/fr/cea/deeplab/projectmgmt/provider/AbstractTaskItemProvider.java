@@ -70,6 +70,8 @@ public class AbstractTaskItemProvider extends ItemProviderAdapter
             this.addTagsPropertyDescriptor(object);
             this.addAssignedPersonsPropertyDescriptor(object);
             this.addAssignedTeamsPropertyDescriptor(object);
+            this.addCalculationOptionPropertyDescriptor(object);
+            this.addDurationPropertyDescriptor(object);
         }
         return this.itemPropertyDescriptors;
     }
@@ -176,6 +178,29 @@ public class AbstractTaskItemProvider extends ItemProviderAdapter
     }
 
     /**
+     * This adds a property descriptor for the Calculation Option feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addCalculationOptionPropertyDescriptor(Object object) {
+        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
+                this.getString("_UI_AbstractTask_calculationOption_feature"),
+                this.getString("_UI_PropertyDescriptor_description", "_UI_AbstractTask_calculationOption_feature", "_UI_AbstractTask_type"),
+                ProjectmgmtPackage.Literals.ABSTRACT_TASK__CALCULATION_OPTION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Duration feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDurationPropertyDescriptor(Object object) {
+        this.itemPropertyDescriptors.add(this.createItemPropertyDescriptor(((ComposeableAdapterFactory) this.adapterFactory).getRootAdapterFactory(), this.getResourceLocator(),
+                this.getString("_UI_AbstractTask_duration_feature"), this.getString("_UI_PropertyDescriptor_description", "_UI_AbstractTask_duration_feature", "_UI_AbstractTask_type"),
+                ProjectmgmtPackage.Literals.ABSTRACT_TASK__DURATION, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
      * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
@@ -244,6 +269,8 @@ public class AbstractTaskItemProvider extends ItemProviderAdapter
             case ProjectmgmtPackage.ABSTRACT_TASK__END_TIME:
             case ProjectmgmtPackage.ABSTRACT_TASK__PROGRESS:
             case ProjectmgmtPackage.ABSTRACT_TASK__COMPUTE_START_END_DYNAMICALLY:
+            case ProjectmgmtPackage.ABSTRACT_TASK__CALCULATION_OPTION:
+            case ProjectmgmtPackage.ABSTRACT_TASK__DURATION:
                 this.fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
             case ProjectmgmtPackage.ABSTRACT_TASK__SUB_TASKS:

@@ -18,7 +18,6 @@ import fr.cea.deeplab.projectmgmt.WorkpackageArtefact;
 import fr.cea.deeplab.projectmgmt.WorkpackageArtefactNature;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
@@ -581,6 +580,7 @@ public class WorkpackageArtefactImpl extends MinimalEObjectImpl.Container implem
                 return;
             default:
                 super.eSet(featureID, newValue);
+                return;
         }
     }
 
@@ -614,7 +614,7 @@ public class WorkpackageArtefactImpl extends MinimalEObjectImpl.Container implem
                 this.setInvoiceAmount(INVOICE_AMOUNT_EDEFAULT);
                 return;
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__RESPONSIBLE:
-                this.setResponsible(null);
+                this.setResponsible((Person) null);
                 return;
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__VERSION:
                 this.setVersion(VERSION_EDEFAULT);
@@ -624,6 +624,7 @@ public class WorkpackageArtefactImpl extends MinimalEObjectImpl.Container implem
                 return;
             default:
                 super.eUnset(featureID);
+                return;
         }
     }
 
@@ -636,25 +637,25 @@ public class WorkpackageArtefactImpl extends MinimalEObjectImpl.Container implem
     public boolean eIsSet(int featureID) {
         switch (featureID) {
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__NAME:
-                return !Objects.equals(NAME_EDEFAULT, this.name);
+                return NAME_EDEFAULT == null ? this.name != null : !NAME_EDEFAULT.equals(this.name);
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__DESCRIPTION:
-                return !Objects.equals(DESCRIPTION_EDEFAULT, this.description);
+                return DESCRIPTION_EDEFAULT == null ? this.description != null : !DESCRIPTION_EDEFAULT.equals(this.description);
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__NATURE:
                 return this.nature != NATURE_EDEFAULT;
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__PLANNED_DEADLINE:
-                return !Objects.equals(PLANNED_DEADLINE_EDEFAULT, this.plannedDeadline);
+                return PLANNED_DEADLINE_EDEFAULT == null ? this.plannedDeadline != null : !PLANNED_DEADLINE_EDEFAULT.equals(this.plannedDeadline);
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__EFFECTIVE_DEAD_LINE:
-                return !Objects.equals(EFFECTIVE_DEAD_LINE_EDEFAULT, this.effectiveDeadLine);
+                return EFFECTIVE_DEAD_LINE_EDEFAULT == null ? this.effectiveDeadLine != null : !EFFECTIVE_DEAD_LINE_EDEFAULT.equals(this.effectiveDeadLine);
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__IS_INVOICE_TRIGGER:
-                return !Objects.equals(IS_INVOICE_TRIGGER_EDEFAULT, this.isInvoiceTrigger);
+                return IS_INVOICE_TRIGGER_EDEFAULT == null ? this.isInvoiceTrigger != null : !IS_INVOICE_TRIGGER_EDEFAULT.equals(this.isInvoiceTrigger);
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__INVOICE_AMOUNT:
-                return !Objects.equals(INVOICE_AMOUNT_EDEFAULT, this.invoiceAmount);
+                return INVOICE_AMOUNT_EDEFAULT == null ? this.invoiceAmount != null : !INVOICE_AMOUNT_EDEFAULT.equals(this.invoiceAmount);
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__RESPONSIBLE:
                 return this.responsible != null;
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__VERSION:
-                return !Objects.equals(VERSION_EDEFAULT, this.version);
+                return VERSION_EDEFAULT == null ? this.version != null : !VERSION_EDEFAULT.equals(this.version);
             case ProjectmgmtPackage.WORKPACKAGE_ARTEFACT__IS_OBSOLETE:
-                return !Objects.equals(IS_OBSOLETE_EDEFAULT, this.isObsolete);
+                return IS_OBSOLETE_EDEFAULT == null ? this.isObsolete != null : !IS_OBSOLETE_EDEFAULT.equals(this.isObsolete);
             default:
                 return super.eIsSet(featureID);
         }
@@ -670,26 +671,27 @@ public class WorkpackageArtefactImpl extends MinimalEObjectImpl.Container implem
         if (this.eIsProxy())
             return super.toString();
 
-        String result = super.toString() + " (name: "
-                + this.name
-                + ", description: "
-                + this.description
-                + ", nature: "
-                + this.nature
-                + ", plannedDeadline: "
-                + this.plannedDeadline
-                + ", effectiveDeadLine: "
-                + this.effectiveDeadLine
-                + ", isInvoiceTrigger: "
-                + this.isInvoiceTrigger
-                + ", invoiceAmount: "
-                + this.invoiceAmount
-                + ", version: "
-                + this.version
-                + ", isObsolete: "
-                + this.isObsolete
-                + ')';
-        return result;
+        StringBuilder result = new StringBuilder(super.toString());
+        result.append(" (name: ");
+        result.append(this.name);
+        result.append(", description: ");
+        result.append(this.description);
+        result.append(", nature: ");
+        result.append(this.nature);
+        result.append(", plannedDeadline: ");
+        result.append(this.plannedDeadline);
+        result.append(", effectiveDeadLine: ");
+        result.append(this.effectiveDeadLine);
+        result.append(", isInvoiceTrigger: ");
+        result.append(this.isInvoiceTrigger);
+        result.append(", invoiceAmount: ");
+        result.append(this.invoiceAmount);
+        result.append(", version: ");
+        result.append(this.version);
+        result.append(", isObsolete: ");
+        result.append(this.isObsolete);
+        result.append(')');
+        return result.toString();
     }
 
 } // WorkpackageArtefactImpl

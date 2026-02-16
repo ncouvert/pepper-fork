@@ -13,6 +13,8 @@
 package fr.cea.deeplab.projectmgmt.util;
 
 import fr.cea.deeplab.projectmgmt.AbstractTask;
+import fr.cea.deeplab.projectmgmt.Dependency;
+import fr.cea.deeplab.projectmgmt.DependencyLink;
 import fr.cea.deeplab.projectmgmt.ExternalStakeholder;
 import fr.cea.deeplab.projectmgmt.InternalStakeholder;
 import fr.cea.deeplab.projectmgmt.KeyResult;
@@ -170,6 +172,16 @@ public class ProjectmgmtAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseRisk(Risk object) {
             return ProjectmgmtAdapterFactory.this.createRiskAdapter();
+        }
+
+        @Override
+        public Adapter caseDependencyLink(DependencyLink object) {
+            return ProjectmgmtAdapterFactory.this.createDependencyLinkAdapter();
+        }
+
+        @Override
+        public Adapter caseDependency(Dependency object) {
+            return ProjectmgmtAdapterFactory.this.createDependencyAdapter();
         }
 
         @Override
@@ -412,6 +424,32 @@ public class ProjectmgmtAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createRiskAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link fr.cea.deeplab.projectmgmt.DependencyLink <em>Dependency
+     * Link</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see fr.cea.deeplab.projectmgmt.DependencyLink
+     * @generated
+     */
+    public Adapter createDependencyLinkAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link fr.cea.deeplab.projectmgmt.Dependency <em>Dependency</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+     * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     *
+     * @return the new adapter.
+     * @see fr.cea.deeplab.projectmgmt.Dependency
+     * @generated
+     */
+    public Adapter createDependencyAdapter() {
         return null;
     }
 

@@ -13,6 +13,8 @@
 package fr.cea.deeplab.projectmgmt.util;
 
 import fr.cea.deeplab.projectmgmt.AbstractTask;
+import fr.cea.deeplab.projectmgmt.Dependency;
+import fr.cea.deeplab.projectmgmt.DependencyLink;
 import fr.cea.deeplab.projectmgmt.ExternalStakeholder;
 import fr.cea.deeplab.projectmgmt.InternalStakeholder;
 import fr.cea.deeplab.projectmgmt.KeyResult;
@@ -170,6 +172,8 @@ public class ProjectmgmtSwitch<T> extends Switch<T> {
                 if (result == null)
                     result = this.caseAbstractTask(task);
                 if (result == null)
+                    result = this.caseDependency(task);
+                if (result == null)
                     result = this.defaultCase(theEObject);
                 return result;
             }
@@ -202,6 +206,8 @@ public class ProjectmgmtSwitch<T> extends Switch<T> {
                 Workpackage workpackage = (Workpackage) theEObject;
                 T result = this.caseWorkpackage(workpackage);
                 if (result == null)
+                    result = this.caseDependency(workpackage);
+                if (result == null)
                     result = this.defaultCase(theEObject);
                 return result;
             }
@@ -215,6 +221,20 @@ public class ProjectmgmtSwitch<T> extends Switch<T> {
             case ProjectmgmtPackage.RISK: {
                 Risk risk = (Risk) theEObject;
                 T result = this.caseRisk(risk);
+                if (result == null)
+                    result = this.defaultCase(theEObject);
+                return result;
+            }
+            case ProjectmgmtPackage.DEPENDENCY_LINK: {
+                DependencyLink dependencyLink = (DependencyLink) theEObject;
+                T result = this.caseDependencyLink(dependencyLink);
+                if (result == null)
+                    result = this.defaultCase(theEObject);
+                return result;
+            }
+            case ProjectmgmtPackage.DEPENDENCY: {
+                Dependency dependency = (Dependency) theEObject;
+                T result = this.caseDependency(dependency);
                 if (result == null)
                     result = this.defaultCase(theEObject);
                 return result;
@@ -463,6 +483,35 @@ public class ProjectmgmtSwitch<T> extends Switch<T> {
      * @generated
      */
     public T caseRisk(Risk object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Dependency Link</em>'. <!-- begin-user-doc
+     * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc
+     * -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Dependency Link</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDependencyLink(DependencyLink object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '<em>Dependency</em>'. <!-- begin-user-doc -->
+     * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+     *
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '<em>Dependency</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseDependency(Dependency object) {
         return null;
     }
 
