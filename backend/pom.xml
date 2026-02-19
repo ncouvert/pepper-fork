@@ -16,8 +16,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>deeplab</groupId>
-	<artifactId>deeplab-container</artifactId>
+	<groupId>pepper</groupId>
+	<artifactId>pepper-container</artifactId>
 	<version>2026.1.0</version>
 
 	<name>Pepper</name>
@@ -38,12 +38,12 @@
 	 
 	  -->
 	<modules>
-		<module>deeplab-parent</module>
-		<module>deeplab-projectmanagement</module>
-		<module>deeplab-projectmanagement-edit</module>
-		<module>deeplab-projectmanagement-starter</module>
-		<module>deeplab-application</module>
-		<module>deeplab-frontend</module>
+		<module>pepper-parent</module>
+		<module>pepper-mm</module>
+		<module>pepper-edit</module>
+		<module>pepper-starter</module>
+		<module>pepper-application</module>
+		<module>pepper-frontend</module>
 
 	</modules>
 
