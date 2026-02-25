@@ -52,14 +52,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>pepper</groupId>
+			<groupId>pepper-mm</groupId>
 			<artifactId>pepper-mm</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>pepper</groupId>
+			<groupId>pepper-mm</groupId>
 			<artifactId>pepper-edit</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.sirius</groupId>
