@@ -52,6 +52,10 @@
 			<id>github-sirius-web</id>
 			<url>https://maven.pkg.github.com/eclipse-web/sirius-web</url>
 		</repository>
+		<repository>
+			<id>github-pepper-mm</id>
+			<url>https://maven.pkg.github.com/ObeoNetwork/pepper-mm</url>
+		</repository>
 	</repositories>
 
 	<dependencyManagement>

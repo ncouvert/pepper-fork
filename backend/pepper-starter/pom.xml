@@ -43,6 +43,10 @@
 			<name>Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/eclipse-sirius/sirius-web</url>
 		</repository>
+		<repository>
+			<id>github-pepper-mm</id>
+			<url>https://maven.pkg.github.com/ObeoNetwork/pepper-mm</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
