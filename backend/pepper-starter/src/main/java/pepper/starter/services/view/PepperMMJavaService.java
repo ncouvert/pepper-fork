@@ -15,8 +15,8 @@ package pepper.starter.services.view;
 import pepper.peppermm.AbstractTask;
 import pepper.peppermm.KeyResult;
 import pepper.peppermm.Objective;
-import pepper.peppermm.Project;
 import pepper.peppermm.PepperFactory;
+import pepper.peppermm.Project;
 import pepper.peppermm.TagFolder;
 import pepper.peppermm.Task;
 import pepper.peppermm.TaskTag;
@@ -25,6 +25,7 @@ import pepper.peppermm.Workpackage;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
@@ -61,11 +62,20 @@ public class PepperMMJavaService {
             if (description != null) {
                 task.setDescription(description);
             }
-            if (startTime != null) {
-                task.setStartTime(startTime);
-            }
-            if (endTime != null) {
-                task.setEndTime(endTime);
+            if (startTime != null && endTime != null) {
+                Instant newStartTime = startTime;
+                Instant newEndTime = endTime;
+                //setting the instants to xx:00 to the start time and xx:59 to the end time
+                if (endTime.atZone(ZoneId.systemDefault()).getHour() == 0 || endTime.atZone(ZoneId.systemDefault()).getHour() == 12) {
+                    newEndTime = endTime.minus(1, ChronoUnit.MINUTES);
+                }
+                if (startTime.atZone(ZoneId.systemDefault()).getMinute() == 1) {
+                    newStartTime = startTime.minus(1, ChronoUnit.MINUTES);
+                }
+                int newDuration = (int) ChronoUnit.HOURS.between(newStartTime, newEndTime) + 1; //+1 because between(00:00, 00:59) = 0. We want 1.
+                task.setStartTime(newStartTime);
+                task.setEndTime(newEndTime);
+                task.setDuration(newDuration);
             }
             if (progress != null) {
                 task.setProgress(progress);
