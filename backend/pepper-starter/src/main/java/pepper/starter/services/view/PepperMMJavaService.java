@@ -25,6 +25,7 @@ import pepper.peppermm.Workpackage;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -78,8 +79,14 @@ public class PepperMMJavaService {
         if (context instanceof AbstractTask abstractTask) {
             // The new task follows the context task and has the same duration than the context task.
             if (abstractTask.getEndTime() != null && abstractTask.getStartTime() != null) {
-                task.setStartTime(abstractTask.getEndTime());
-                task.setEndTime(Instant.ofEpochSecond(2 * abstractTask.getEndTime().getEpochSecond() - abstractTask.getStartTime().getEpochSecond()));
+                if (abstractTask.getEndTime().equals(abstractTask.getStartTime())) {
+                    // If the task is a Milestone
+                    task.setStartTime(abstractTask.getEndTime());
+                    task.setEndTime(Instant.ofEpochSecond(2 * abstractTask.getEndTime().getEpochSecond() - abstractTask.getStartTime().getEpochSecond()));
+                } else {
+                    task.setStartTime(abstractTask.getEndTime().plus(1, ChronoUnit.MINUTES));
+                    task.setEndTime(Instant.ofEpochSecond(2 * abstractTask.getEndTime().getEpochSecond() - abstractTask.getStartTime().getEpochSecond()).plus(1, ChronoUnit.MINUTES));
+                }
             }
 
             EObject parent = context.eContainer();
