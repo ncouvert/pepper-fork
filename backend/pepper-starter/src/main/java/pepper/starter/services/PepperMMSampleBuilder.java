@@ -33,6 +33,9 @@ import pepper.peppermm.WorkpackageArtefact;
 import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +48,11 @@ import java.util.Locale;
  */
 public class PepperMMSampleBuilder {
 
+    private static final ZonedDateTime ZONED_DATE_TIME = LocalDateTime
+            .of(2023, 12, 10, 0, 0)
+            .atZone(ZoneId.systemDefault());
+    private static final String ZONE = ZONED_DATE_TIME.getOffset().toString();
+    
     private static final String KANBAN = "kanban";
     private static final String REVIEW = "Review";
     private static final String DEVELOPMENT = "Development";
@@ -52,15 +60,17 @@ public class PepperMMSampleBuilder {
     private static final String RELEASE = "Release";
     private static final String SPECIFICATION = "Specification";
     private static final String IDEA = "Idea";
-    private static final String DATE_2023_12_10T00_00_00Z = "2023-12-10T00:00:00Z";
-    private static final String DATE_2023_12_16T00_00_00Z = "2023-12-16T00:00:00Z";
-    private static final String DATE_2023_12_11T00_00_00Z = "2023-12-11T00:00:00Z";
-    private static final String DATE_2023_12_12T23_59_00Z = "2023-12-12T23:59:00Z";
-    private static final String DATE_2023_12_15T23_59_00Z = "2023-12-15T23:59:00Z";
-    private static final String DATE_2023_12_11T23_59_00Z = "2023-12-11T23:59:00Z";
-    private static final String DATE_2023_12_13T00_00_00Z = "2023-12-13T00:00:00Z";
-    private static final String DATE_2023_12_16T23_59_00Z = "2023-12-16T23:59:00Z";
-    private static final String DATE_2023_12_18T00_00_00Z = "2023-12-18T00:00:00Z";
+    private static final String DATE_2023_12_10T00_00_00 = "2023-12-10T00:00:00" + ZONE;
+    private static final String DATE_2023_12_11T00_00_00 = "2023-12-11T00:00:00" + ZONE;
+    private static final String DATE_2023_12_11T23_59_00 = "2023-12-11T23:59:00" + ZONE;
+    private static final String DATE_2023_12_12T23_59_00 = "2023-12-12T23:59:00" + ZONE;
+    private static final String DATE_2023_12_13T00_00_00 = "2023-12-13T00:00:00" + ZONE;
+    private static final String DATE_2023_12_14T00_00_00 = "2023-12-14T12:00:00" + ZONE;
+    private static final String DATE_2023_12_14T23_59_00 = "2023-12-14T23:59:00" + ZONE;
+    private static final String DATE_2023_12_15T23_59_00 = "2023-12-15T23:59:00" + ZONE;
+    private static final String DATE_2023_12_16T00_00_00 = "2023-12-16T00:00:00" + ZONE;
+    private static final String DATE_2023_12_16T23_59_00 = "2023-12-16T23:59:00" + ZONE;
+    private static final String DATE_2023_12_18T00_00_00 = "2023-12-18T00:00:00" + ZONE;
     private static final String DATE_2023_12_10 = "2023-12-10";
     private static final String DATE_2023_30_10 = "2023-12-30";
 
@@ -106,8 +116,8 @@ public class PepperMMSampleBuilder {
     private Task createCodeDev(Person peter) {
         Task codeDev = PepperFactory.eINSTANCE.createTask();
         codeDev.setName(CODE_DEVELOPMENT);
-        codeDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        codeDev.setEndTime(Instant.parse(DATE_2023_12_15T23_59_00Z));
+        codeDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        codeDev.setEndTime(Instant.parse(DATE_2023_12_15T23_59_00));
         codeDev.getAssignedPersons().add(peter);
         codeDev.setComputeStartEndDynamically(false);
         codeDev.setProgress(40);
@@ -127,14 +137,14 @@ public class PepperMMSampleBuilder {
         Task idea = PepperFactory.eINSTANCE.createTask();
         idea.setName(IDEA);
         idea.setDescription("Description of the Idea");
-        idea.setStartTime(Instant.parse(DATE_2023_12_10T00_00_00Z));
-        idea.setEndTime(Instant.parse(DATE_2023_12_11T23_59_00Z));
+        idea.setStartTime(Instant.parse(DATE_2023_12_10T00_00_00));
+        idea.setEndTime(Instant.parse(DATE_2023_12_11T23_59_00));
         idea.setProgress(50);
         Task spec = PepperFactory.eINSTANCE.createTask();
         spec.setName(SPECIFICATION);
         spec.setDescription("Description of the Specification");
-        spec.setStartTime(Instant.parse(DATE_2023_12_11T00_00_00Z));
-        spec.setEndTime(Instant.parse(DATE_2023_12_12T23_59_00Z));
+        spec.setStartTime(Instant.parse(DATE_2023_12_11T00_00_00));
+        spec.setEndTime(Instant.parse(DATE_2023_12_12T23_59_00));
         spec.setProgress(50);
 
         DependencyLink depSpecToIdea = PepperFactory.eINSTANCE.createDependencyLink();
@@ -143,8 +153,8 @@ public class PepperMMSampleBuilder {
 
         Task development = PepperFactory.eINSTANCE.createTask();
         development.setName(DEVELOPMENT);
-        development.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        development.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        development.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        development.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
         development.setComputeStartEndDynamically(true);
 
         DependencyLink depDevelopmentToSpec = PepperFactory.eINSTANCE.createDependencyLink();
@@ -154,29 +164,29 @@ public class PepperMMSampleBuilder {
         Task codeDev = createCodeDev(peter);
         Task frontDev = PepperFactory.eINSTANCE.createTask();
         frontDev.setName("Front");
-        frontDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        frontDev.setEndTime(Instant.parse("2023-12-14T23:59:00Z"));
+        frontDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        frontDev.setEndTime(Instant.parse(DATE_2023_12_14T23_59_00));
         frontDev.setProgress(30);
         frontDev.getAssignedPersons().add(peter);
         Task backDev = PepperFactory.eINSTANCE.createTask();
         backDev.setName("Back");
-        backDev.setStartTime(Instant.parse("2023-12-14T12:00:00Z"));
-        backDev.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        backDev.setStartTime(Instant.parse(DATE_2023_12_14T00_00_00));
+        backDev.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
         backDev.setProgress(40);
         backDev.getAssignedPersons().add(paul);
         codeDev.getSubTasks().addAll(List.of(frontDev, backDev));
 
         Task review = PepperFactory.eINSTANCE.createTask();
         review.setName(REVIEW);
-        review.setStartTime(Instant.parse(DATE_2023_12_16T00_00_00Z));
-        review.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        review.setStartTime(Instant.parse(DATE_2023_12_16T00_00_00));
+        review.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
         development.getSubTasks().addAll(List.of(codeDev, review));
         codeDev.getAssignedPersons().add(paul);
 
         Task release = PepperFactory.eINSTANCE.createTask();
         release.setName(RELEASE);
-        release.setStartTime(Instant.parse(DATE_2023_12_18T00_00_00Z));
-        release.setEndTime(Instant.parse(DATE_2023_12_18T00_00_00Z));
+        release.setStartTime(Instant.parse(DATE_2023_12_18T00_00_00));
+        release.setEndTime(Instant.parse(DATE_2023_12_18T00_00_00));
 
         workpackage.getOwnedTasks().addAll(List.of(idea, spec, development, release));
         return devProject;
@@ -199,14 +209,14 @@ public class PepperMMSampleBuilder {
 
         Task idea = PepperFactory.eINSTANCE.createTask();
         idea.setName(IDEA);
-        idea.setStartTime(Instant.parse(DATE_2023_12_10T00_00_00Z));
-        idea.setEndTime(Instant.parse(DATE_2023_12_11T23_59_00Z));
+        idea.setStartTime(Instant.parse(DATE_2023_12_10T00_00_00));
+        idea.setEndTime(Instant.parse(DATE_2023_12_11T23_59_00));
         idea.setProgress(50);
         idea.getTags().add(dailyTags.get(0));
         Task spec = PepperFactory.eINSTANCE.createTask();
         spec.setName(SPECIFICATION);
-        spec.setStartTime(Instant.parse(DATE_2023_12_11T00_00_00Z));
-        spec.setEndTime(Instant.parse(DATE_2023_12_12T23_59_00Z));
+        spec.setStartTime(Instant.parse(DATE_2023_12_11T00_00_00));
+        spec.setEndTime(Instant.parse(DATE_2023_12_12T23_59_00));
         spec.setProgress(50);
         spec.getTags().add(dailyTags.get(0));
 
@@ -216,8 +226,8 @@ public class PepperMMSampleBuilder {
 
         Task development = PepperFactory.eINSTANCE.createTask();
         development.setName(DEVELOPMENT);
-        development.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        development.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        development.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        development.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
         DependencyLink depDevelopmentToSpec = PepperFactory.eINSTANCE.createDependencyLink();
         depDevelopmentToSpec.setSource(spec);
         development.getDependencies().add(depDevelopmentToSpec);
@@ -225,23 +235,23 @@ public class PepperMMSampleBuilder {
 
         Task codeDev = PepperFactory.eINSTANCE.createTask();
         codeDev.setName(CODE_DEVELOPMENT);
-        codeDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        codeDev.setEndTime(Instant.parse(DATE_2023_12_15T23_59_00Z));
+        codeDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        codeDev.setEndTime(Instant.parse(DATE_2023_12_15T23_59_00));
         codeDev.getAssignedPersons().add(peter);
         codeDev.getTags().add(dailyTags.get(2));
 
         Task review = PepperFactory.eINSTANCE.createTask();
         review.setName(REVIEW);
-        review.setStartTime(Instant.parse(DATE_2023_12_16T00_00_00Z));
-        review.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        review.setStartTime(Instant.parse(DATE_2023_12_16T00_00_00));
+        review.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
         development.getSubTasks().addAll(List.of(codeDev, review));
         codeDev.getAssignedPersons().add(paul);
         review.getTags().add(dailyTags.get(3));
 
         Task release = PepperFactory.eINSTANCE.createTask();
         release.setName(RELEASE);
-        release.setStartTime(Instant.parse(DATE_2023_12_18T00_00_00Z));
-        release.setEndTime(Instant.parse(DATE_2023_12_18T00_00_00Z));
+        release.setStartTime(Instant.parse(DATE_2023_12_18T00_00_00));
+        release.setEndTime(Instant.parse(DATE_2023_12_18T00_00_00));
         release.getTags().add(dailyTags.get(4));
 
 
@@ -266,15 +276,15 @@ public class PepperMMSampleBuilder {
 
         Task idea = PepperFactory.eINSTANCE.createTask();
         idea.setName(IDEA);
-        idea.setStartTime(Instant.parse(DATE_2023_12_10T00_00_00Z));
-        idea.setEndTime(Instant.parse(DATE_2023_12_11T23_59_00Z));
+        idea.setStartTime(Instant.parse(DATE_2023_12_10T00_00_00));
+        idea.setEndTime(Instant.parse(DATE_2023_12_11T23_59_00));
         idea.setProgress(50);
         //We add it in Done tag
         idea.getTags().add(kanbanTags.get(2));
         Task spec = PepperFactory.eINSTANCE.createTask();
         spec.setName(SPECIFICATION);
-        spec.setStartTime(Instant.parse(DATE_2023_12_11T00_00_00Z));
-        spec.setEndTime(Instant.parse(DATE_2023_12_12T23_59_00Z));
+        spec.setStartTime(Instant.parse(DATE_2023_12_11T00_00_00));
+        spec.setEndTime(Instant.parse(DATE_2023_12_12T23_59_00));
         spec.setProgress(50);
         DependencyLink depSpecToIdea = PepperFactory.eINSTANCE.createDependencyLink();
         depSpecToIdea.setSource(idea);
@@ -283,8 +293,8 @@ public class PepperMMSampleBuilder {
 
         Task development = PepperFactory.eINSTANCE.createTask();
         development.setName(DEVELOPMENT);
-        development.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        development.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        development.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        development.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
         DependencyLink depDevelopmentToSpec = PepperFactory.eINSTANCE.createDependencyLink();
         depDevelopmentToSpec.setSource(spec);
         development.getDependencies().add(depDevelopmentToSpec);
@@ -293,16 +303,16 @@ public class PepperMMSampleBuilder {
 
         Task codeDev = PepperFactory.eINSTANCE.createTask();
         codeDev.setName(CODE_DEVELOPMENT);
-        codeDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        codeDev.setEndTime(Instant.parse(DATE_2023_12_15T23_59_00Z));
+        codeDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        codeDev.setEndTime(Instant.parse(DATE_2023_12_15T23_59_00));
         codeDev.getAssignedPersons().add(peter);
         //We add it in Doing tag
         codeDev.getTags().add(kanbanTags.get(1));
 
         Task review = PepperFactory.eINSTANCE.createTask();
         review.setName(REVIEW);
-        review.setStartTime(Instant.parse(DATE_2023_12_16T00_00_00Z));
-        review.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        review.setStartTime(Instant.parse(DATE_2023_12_16T00_00_00));
+        review.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
         development.getSubTasks().addAll(List.of(codeDev, review));
         codeDev.getAssignedPersons().add(paul);
         //We add it in To Do tag
@@ -310,8 +320,8 @@ public class PepperMMSampleBuilder {
 
         Task release = PepperFactory.eINSTANCE.createTask();
         release.setName(RELEASE);
-        release.setStartTime(Instant.parse(DATE_2023_12_18T00_00_00Z));
-        release.setEndTime(Instant.parse(DATE_2023_12_18T00_00_00Z));
+        release.setStartTime(Instant.parse(DATE_2023_12_18T00_00_00));
+        release.setEndTime(Instant.parse(DATE_2023_12_18T00_00_00));
         //We add it in To Do tag
         release.getTags().add(kanbanTags.get(0));
 
@@ -338,13 +348,13 @@ public class PepperMMSampleBuilder {
 
         Task idea = PepperFactory.eINSTANCE.createTask();
         idea.setName(IDEA);
-        idea.setStartTime(Instant.parse(DATE_2023_12_10T00_00_00Z));
-        idea.setEndTime(Instant.parse(DATE_2023_12_11T23_59_00Z));
+        idea.setStartTime(Instant.parse(DATE_2023_12_10T00_00_00));
+        idea.setEndTime(Instant.parse(DATE_2023_12_11T23_59_00));
         idea.setProgress(50);
         Task spec = PepperFactory.eINSTANCE.createTask();
         spec.setName(SPECIFICATION);
-        spec.setStartTime(Instant.parse(DATE_2023_12_11T00_00_00Z));
-        spec.setEndTime(Instant.parse(DATE_2023_12_12T23_59_00Z));
+        spec.setStartTime(Instant.parse(DATE_2023_12_11T00_00_00));
+        spec.setEndTime(Instant.parse(DATE_2023_12_12T23_59_00));
         spec.setProgress(50);
         DependencyLink depSpecToIdea = PepperFactory.eINSTANCE.createDependencyLink();
         depSpecToIdea.setSource(idea);
@@ -352,8 +362,8 @@ public class PepperMMSampleBuilder {
 
         Task development = PepperFactory.eINSTANCE.createTask();
         development.setName(DEVELOPMENT);
-        development.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        development.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        development.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        development.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
 
         DependencyLink depDevelopmentToSpec = PepperFactory.eINSTANCE.createDependencyLink();
         depDevelopmentToSpec.setSource(spec);
@@ -361,14 +371,14 @@ public class PepperMMSampleBuilder {
 
         Task codeDev = PepperFactory.eINSTANCE.createTask();
         codeDev.setName(CODE_DEVELOPMENT);
-        codeDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00Z));
-        codeDev.setEndTime(Instant.parse(DATE_2023_12_15T23_59_00Z));
+        codeDev.setStartTime(Instant.parse(DATE_2023_12_13T00_00_00));
+        codeDev.setEndTime(Instant.parse(DATE_2023_12_15T23_59_00));
         codeDev.getAssignedPersons().add(peter);
 
         Task review = PepperFactory.eINSTANCE.createTask();
         review.setName(REVIEW);
-        review.setStartTime(Instant.parse(DATE_2023_12_16T00_00_00Z));
-        review.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00Z));
+        review.setStartTime(Instant.parse(DATE_2023_12_16T00_00_00));
+        review.setEndTime(Instant.parse(DATE_2023_12_16T23_59_00));
         development.getSubTasks().addAll(List.of(codeDev, review));
         codeDev.getAssignedPersons().add(paul);
 
