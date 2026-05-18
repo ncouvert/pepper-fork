@@ -430,6 +430,12 @@ public class PepperMMJavaService {
         return latterLocalDate;
     }
 
+
+    public void editDependencyLinkDuration(DependencyLink depLink, int newDuration) {
+        depLink.setDuration(newDuration);
+        followMoveDependency(depLink.getSource());
+    }
+
     public List<Task> getTasksWithTag(TaskTag tag, Workpackage workpackage) {
         return Optional.of(workpackage).stream()
                 .flatMap(wkP -> {
