@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import pepper.peppermm.AbstractTask;
 import pepper.peppermm.DependencyLink;
 import pepper.peppermm.DependencyRelatedObject;
+import pepper.peppermm.DurationViewMode;
 import pepper.peppermm.ExternalStakeholder;
 import pepper.peppermm.InternalStakeholder;
 import pepper.peppermm.KeyResult;
@@ -217,6 +218,13 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
      * 
      * @generated
      */
+    private EEnum durationViewModeEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EEnum riskKindEEnum = null;
 
     /**
@@ -248,8 +256,8 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
     private EDataType dateEDataType = null;
 
     /**
-     * Creates an instance of the model <b>Package</b>, registered with {@link Registry
-     * EPackage.Registry} by the package package URI value.
+     * Creates an instance of the model <b>Package</b>, registered with {@link Registry EPackage.Registry} by the
+     * package package URI value.
      * <p>
      * Note: the correct way to create the package is via the static factory method {@link #init init()}, which also
      * performs initialization of the package, or returns the registered package, if one already exists. <!--
@@ -286,10 +294,10 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
      */
     public static PepperPackage init() {
         if (isInited)
-            return (PepperPackage) Registry.INSTANCE.getEPackage(PepperPackage.eNS_URI);
+            return (PepperPackage) EPackage.Registry.INSTANCE.getEPackage(PepperPackage.eNS_URI);
 
         // Obtain or create and register package
-        Object registeredPepperPackage = Registry.INSTANCE.get(eNS_URI);
+        Object registeredPepperPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
         PepperPackageImpl thePepperPackage = registeredPepperPackage instanceof PepperPackageImpl ? (PepperPackageImpl) registeredPepperPackage : new PepperPackageImpl();
 
         isInited = true;
@@ -304,7 +312,7 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
         thePepperPackage.freeze();
 
         // Update the registry and return the package
-        Registry.INSTANCE.put(PepperPackage.eNS_URI, thePepperPackage);
+        EPackage.Registry.INSTANCE.put(PepperPackage.eNS_URI, thePepperPackage);
         return thePepperPackage;
     }
 
@@ -626,6 +634,16 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
     @Override
     public EAttribute getAbstractTask_Duration() {
         return (EAttribute) abstractTaskEClass.getEStructuralFeatures().get(11);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public EAttribute getAbstractTask_DurationViewMode() {
+        return (EAttribute) abstractTaskEClass.getEStructuralFeatures().get(12);
     }
 
     /**
@@ -1514,6 +1532,16 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
      * @generated
      */
     @Override
+    public EEnum getDurationViewMode() {
+        return durationViewModeEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
     public EEnum getRiskKind() {
         return riskKindEEnum;
     }
@@ -1626,6 +1654,7 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
         createEReference(abstractTaskEClass, ABSTRACT_TASK__SUB_TASKS);
         createEAttribute(abstractTaskEClass, ABSTRACT_TASK__CALCULATION_OPTION);
         createEAttribute(abstractTaskEClass, ABSTRACT_TASK__DURATION);
+        createEAttribute(abstractTaskEClass, ABSTRACT_TASK__DURATION_VIEW_MODE);
 
         tagFolderEClass = createEClass(TAG_FOLDER);
         createEAttribute(tagFolderEClass, TAG_FOLDER__NAME);
@@ -1730,6 +1759,7 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
         workpackageArtefactNatureEEnum = createEEnum(WORKPACKAGE_ARTEFACT_NATURE);
         startOrEndEEnum = createEEnum(START_OR_END);
         taskTimeBoundariesConstraintEEnum = createEEnum(TASK_TIME_BOUNDARIES_CONSTRAINT);
+        durationViewModeEEnum = createEEnum(DURATION_VIEW_MODE);
 
         // Create data types
         dateEDataType = createEDataType(DATE);
@@ -1838,6 +1868,8 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbstractTask_Duration(), ecorePackage.getEInt(), "duration", null, 0, 1, AbstractTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAbstractTask_DurationViewMode(), this.getDurationViewMode(), "durationViewMode", null, 0, 1, AbstractTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(tagFolderEClass, TagFolder.class, "TagFolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTagFolder_Name(), ecorePackage.getEString(), "name", null, 0, 1, TagFolder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
@@ -2048,6 +2080,10 @@ public class PepperPackageImpl extends EPackageImpl implements PepperPackage {
         addEEnumLiteral(taskTimeBoundariesConstraintEEnum, TaskTimeBoundariesConstraint.START_END);
         addEEnumLiteral(taskTimeBoundariesConstraintEEnum, TaskTimeBoundariesConstraint.END_DURATION);
         addEEnumLiteral(taskTimeBoundariesConstraintEEnum, TaskTimeBoundariesConstraint.START_DURATION);
+
+        initEEnum(durationViewModeEEnum, DurationViewMode.class, "DurationViewMode");
+        addEEnumLiteral(durationViewModeEEnum, DurationViewMode.HOURS);
+        addEEnumLiteral(durationViewModeEEnum, DurationViewMode.DAYS);
 
         // Initialize data types
         initEDataType(dateEDataType, LocalDate.class, "Date", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

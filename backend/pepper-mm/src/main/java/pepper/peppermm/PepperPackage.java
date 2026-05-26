@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EReference;
  * </ul>
  * <!-- end-user-doc -->
  * 
- * @see PepperFactory
+ * @see pepper.peppermm.PepperFactory
  * @model kind="package"
  * @generated
  */
@@ -436,13 +436,22 @@ public interface PepperPackage extends EPackage {
     int ABSTRACT_TASK__DURATION = 11;
 
     /**
+     * The feature id for the '<em><b>Duration View Mode</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ABSTRACT_TASK__DURATION_VIEW_MODE = 12;
+
+    /**
      * The number of structural features of the '<em>Abstract Task</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int ABSTRACT_TASK_FEATURE_COUNT = 12;
+    int ABSTRACT_TASK_FEATURE_COUNT = 13;
 
     /**
      * The meta object id for the '{@link pepper.peppermm.impl.TagFolderImpl <em>Tag Folder</em>}' class. <!--
@@ -635,6 +644,15 @@ public interface PepperPackage extends EPackage {
     int TASK__DURATION = ABSTRACT_TASK__DURATION;
 
     /**
+     * The feature id for the '<em><b>Duration View Mode</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TASK__DURATION_VIEW_MODE = ABSTRACT_TASK__DURATION_VIEW_MODE;
+
+    /**
      * The feature id for the '<em><b>Dependencies</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
@@ -761,6 +779,15 @@ public interface PepperPackage extends EPackage {
      * @ordered
      */
     int OBJECTIVE__DURATION = ABSTRACT_TASK__DURATION;
+
+    /**
+     * The feature id for the '<em><b>Duration View Mode</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int OBJECTIVE__DURATION_VIEW_MODE = ABSTRACT_TASK__DURATION_VIEW_MODE;
 
     /**
      * The feature id for the '<em><b>Owned Key Results</b></em>' containment reference list. <!-- begin-user-doc -->
@@ -890,6 +917,15 @@ public interface PepperPackage extends EPackage {
      * @ordered
      */
     int KEY_RESULT__DURATION = ABSTRACT_TASK__DURATION;
+
+    /**
+     * The feature id for the '<em><b>Duration View Mode</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int KEY_RESULT__DURATION_VIEW_MODE = ABSTRACT_TASK__DURATION_VIEW_MODE;
 
     /**
      * The number of structural features of the '<em>Key Result</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1187,10 +1223,10 @@ public interface PepperPackage extends EPackage {
     int PROJECT_FEATURE_COUNT = 32;
 
     /**
-     * The meta object id for the '{@link DependencyRelatedObject <em>Dependency Related Object</em>}'
+     * The meta object id for the '{@link pepper.peppermm.DependencyRelatedObject <em>Dependency Related Object</em>}'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see DependencyRelatedObject
+     * @see pepper.peppermm.DependencyRelatedObject
      * @see pepper.peppermm.impl.PepperPackageImpl#getDependencyRelatedObject()
      * @generated
      */
@@ -1588,58 +1624,68 @@ public interface PepperPackage extends EPackage {
     int DEPENDENCY_LINK_FEATURE_COUNT = 4;
 
     /**
-     * The meta object id for the '{@link WorkpackageArtefactNature <em>Workpackage Artefact
+     * The meta object id for the '{@link pepper.peppermm.WorkpackageArtefactNature <em>Workpackage Artefact
      * Nature</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see WorkpackageArtefactNature
+     * @see pepper.peppermm.WorkpackageArtefactNature
      * @see pepper.peppermm.impl.PepperPackageImpl#getWorkpackageArtefactNature()
      * @generated
      */
     int WORKPACKAGE_ARTEFACT_NATURE = 22;
 
     /**
-     * The meta object id for the '{@link StartOrEnd <em>Start Or End</em>}' enum. <!-- begin-user-doc
+     * The meta object id for the '{@link pepper.peppermm.StartOrEnd <em>Start Or End</em>}' enum. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @see StartOrEnd
+     * @see pepper.peppermm.StartOrEnd
      * @see pepper.peppermm.impl.PepperPackageImpl#getStartOrEnd()
      * @generated
      */
     int START_OR_END = 23;
 
     /**
-     * The meta object id for the '{@link TaskTimeBoundariesConstraint <em>Task Time Boundaries
+     * The meta object id for the '{@link pepper.peppermm.TaskTimeBoundariesConstraint <em>Task Time Boundaries
      * Constraint</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see TaskTimeBoundariesConstraint
+     * @see pepper.peppermm.TaskTimeBoundariesConstraint
      * @see pepper.peppermm.impl.PepperPackageImpl#getTaskTimeBoundariesConstraint()
      * @generated
      */
     int TASK_TIME_BOUNDARIES_CONSTRAINT = 24;
 
     /**
-     * The meta object id for the '{@link RiskKind <em>Risk Kind</em>}' enum. <!-- begin-user-doc -->
+     * The meta object id for the '{@link pepper.peppermm.DurationViewMode <em>Duration View Mode</em>}' enum. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see pepper.peppermm.DurationViewMode
+     * @see pepper.peppermm.impl.PepperPackageImpl#getDurationViewMode()
+     * @generated
+     */
+    int DURATION_VIEW_MODE = 25;
+
+    /**
+     * The meta object id for the '{@link pepper.peppermm.RiskKind <em>Risk Kind</em>}' enum. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
-     * @see RiskKind
+     * @see pepper.peppermm.RiskKind
      * @see pepper.peppermm.impl.PepperPackageImpl#getRiskKind()
      * @generated
      */
     int RISK_KIND = 20;
 
     /**
-     * The meta object id for the '{@link RiskState <em>Risk State</em>}' enum. <!-- begin-user-doc -->
+     * The meta object id for the '{@link pepper.peppermm.RiskState <em>Risk State</em>}' enum. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
-     * @see RiskState
+     * @see pepper.peppermm.RiskState
      * @see pepper.peppermm.impl.PepperPackageImpl#getRiskState()
      * @generated
      */
     int RISK_STATE = 21;
 
     /**
-     * The meta object id for the '{@link ProjectState <em>Project State</em>}' enum. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * The meta object id for the '{@link ProjectState <em>Project State</em>}' enum. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @see ProjectState
      * @see pepper.peppermm.impl.PepperPackageImpl#getProjectState()
@@ -1654,7 +1700,7 @@ public interface PepperPackage extends EPackage {
      * @see pepper.peppermm.impl.PepperPackageImpl#getInstant()
      * @generated
      */
-    int INSTANT = 26;
+    int INSTANT = 27;
 
     /**
      * The meta object id for the '<em>Date</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1663,11 +1709,11 @@ public interface PepperPackage extends EPackage {
      * @see pepper.peppermm.impl.PepperPackageImpl#getDate()
      * @generated
      */
-    int DATE = 25;
+    int DATE = 26;
 
     /**
-     * Returns the meta object for class '{@link Organization <em>Organization</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link Organization <em>Organization</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for class '<em>Organization</em>'.
      * @see Organization
@@ -1676,8 +1722,8 @@ public interface PepperPackage extends EPackage {
     EClass getOrganization();
 
     /**
-     * Returns the meta object for the attribute '{@link Organization#getName <em>Name</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Organization#getName <em>Name</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see Organization#getName()
@@ -1687,20 +1733,19 @@ public interface PepperPackage extends EPackage {
     EAttribute getOrganization_Name();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Organization#getOwnedProjects
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Organization#getOwnedProjects
      * <em>Owned Projects</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Projects</em>'.
-     * @see Organization#getOwnedProjects()
+     * @see pepper.peppermm.Organization#getOwnedProjects()
      * @see #getOrganization()
      * @generated
      */
     EReference getOrganization_OwnedProjects();
 
     /**
-     * Returns the meta object for the containment reference list
-     * '{@link Organization#getOwnedResourceFolders <em>Owned Resource Folders</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the containment reference list '{@link Organization#getOwnedResourceFolders <em>Owned
+     * Resource Folders</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Resource Folders</em>'.
      * @see Organization#getOwnedResourceFolders()
@@ -1710,18 +1755,18 @@ public interface PepperPackage extends EPackage {
     EReference getOrganization_OwnedResourceFolders();
 
     /**
-     * Returns the meta object for class '{@link Resource <em>Resource</em>}'. <!-- begin-user-doc -->
+     * Returns the meta object for class '{@link pepper.peppermm.Resource <em>Resource</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Resource</em>'.
-     * @see Resource
+     * @see pepper.peppermm.Resource
      * @generated
      */
     EClass getResource();
 
     /**
-     * Returns the meta object for the attribute '{@link Resource#getName <em>Name</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Resource#getName <em>Name</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see Resource#getName()
@@ -1731,8 +1776,8 @@ public interface PepperPackage extends EPackage {
     EAttribute getResource_Name();
 
     /**
-     * Returns the meta object for class '{@link ResourceFolder <em>Resource Folder</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link ResourceFolder <em>Resource Folder</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for class '<em>Resource Folder</em>'.
      * @see ResourceFolder
@@ -1741,8 +1786,8 @@ public interface PepperPackage extends EPackage {
     EClass getResourceFolder();
 
     /**
-     * Returns the meta object for the attribute '{@link ResourceFolder#getName <em>Name</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link ResourceFolder#getName <em>Name</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see ResourceFolder#getName()
@@ -1753,40 +1798,40 @@ public interface PepperPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list
-     * '{@link ResourceFolder#getOwnedResources <em>Owned Resources</em>}'. <!-- begin-user-doc --> <!--
+     * '{@link pepper.peppermm.ResourceFolder#getOwnedResources <em>Owned Resources</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Resources</em>'.
-     * @see ResourceFolder#getOwnedResources()
+     * @see pepper.peppermm.ResourceFolder#getOwnedResources()
      * @see #getResourceFolder()
      * @generated
      */
     EReference getResourceFolder_OwnedResources();
 
     /**
-     * Returns the meta object for the containment reference list '{@link ResourceFolder#getSubFolders
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.ResourceFolder#getSubFolders
      * <em>Sub Folders</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Sub Folders</em>'.
-     * @see ResourceFolder#getSubFolders()
+     * @see pepper.peppermm.ResourceFolder#getSubFolders()
      * @see #getResourceFolder()
      * @generated
      */
     EReference getResourceFolder_SubFolders();
 
     /**
-     * Returns the meta object for class '{@link Team <em>Team</em>}'. <!-- begin-user-doc --> <!--
+     * Returns the meta object for class '{@link pepper.peppermm.Team <em>Team</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for class '<em>Team</em>'.
-     * @see Team
+     * @see pepper.peppermm.Team
      * @generated
      */
     EClass getTeam();
 
     /**
-     * Returns the meta object for the reference list '{@link Team#getMembers <em>Members</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list '{@link Team#getMembers <em>Members</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Members</em>'.
      * @see Team#getMembers()
@@ -1796,49 +1841,49 @@ public interface PepperPackage extends EPackage {
     EReference getTeam_Members();
 
     /**
-     * Returns the meta object for class '{@link InternalStakeholder <em>Internal Stakeholder</em>}'.
+     * Returns the meta object for class '{@link pepper.peppermm.InternalStakeholder <em>Internal Stakeholder</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Internal Stakeholder</em>'.
-     * @see InternalStakeholder
+     * @see pepper.peppermm.InternalStakeholder
      * @generated
      */
     EClass getInternalStakeholder();
 
     /**
-     * Returns the meta object for class '{@link ExternalStakeholder <em>External Stakeholder</em>}'.
+     * Returns the meta object for class '{@link pepper.peppermm.ExternalStakeholder <em>External Stakeholder</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>External Stakeholder</em>'.
-     * @see ExternalStakeholder
+     * @see pepper.peppermm.ExternalStakeholder
      * @generated
      */
     EClass getExternalStakeholder();
 
     /**
-     * Returns the meta object for the attribute list '{@link ExternalStakeholder#getGoals
+     * Returns the meta object for the attribute list '{@link pepper.peppermm.ExternalStakeholder#getGoals
      * <em>Goals</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute list '<em>Goals</em>'.
-     * @see ExternalStakeholder#getGoals()
+     * @see pepper.peppermm.ExternalStakeholder#getGoals()
      * @see #getExternalStakeholder()
      * @generated
      */
     EAttribute getExternalStakeholder_Goals();
 
     /**
-     * Returns the meta object for class '{@link Person <em>Person</em>}'. <!-- begin-user-doc --> <!--
+     * Returns the meta object for class '{@link pepper.peppermm.Person <em>Person</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for class '<em>Person</em>'.
-     * @see Person
+     * @see pepper.peppermm.Person
      * @generated
      */
     EClass getPerson();
 
     /**
-     * Returns the meta object for the attribute '{@link Person#getAlias <em>Alias</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Person#getAlias <em>Alias</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Alias</em>'.
      * @see Person#getAlias()
@@ -1848,8 +1893,8 @@ public interface PepperPackage extends EPackage {
     EAttribute getPerson_Alias();
 
     /**
-     * Returns the meta object for the attribute '{@link Person#getBiography <em>Biography</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Person#getBiography <em>Biography</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Biography</em>'.
      * @see Person#getBiography()
@@ -1859,8 +1904,8 @@ public interface PepperPackage extends EPackage {
     EAttribute getPerson_Biography();
 
     /**
-     * Returns the meta object for the attribute '{@link Person#getImageUrl <em>Image Url</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Person#getImageUrl <em>Image Url</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Image Url</em>'.
      * @see Person#getImageUrl()
@@ -1870,8 +1915,8 @@ public interface PepperPackage extends EPackage {
     EAttribute getPerson_ImageUrl();
 
     /**
-     * Returns the meta object for class '{@link AbstractTask <em>Abstract Task</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link AbstractTask <em>Abstract Task</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for class '<em>Abstract Task</em>'.
      * @see AbstractTask
@@ -1880,8 +1925,8 @@ public interface PepperPackage extends EPackage {
     EClass getAbstractTask();
 
     /**
-     * Returns the meta object for the attribute '{@link AbstractTask#getName <em>Name</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link AbstractTask#getName <em>Name</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see AbstractTask#getName()
@@ -1891,63 +1936,63 @@ public interface PepperPackage extends EPackage {
     EAttribute getAbstractTask_Name();
 
     /**
-     * Returns the meta object for the attribute '{@link AbstractTask#getDescription
+     * Returns the meta object for the attribute '{@link pepper.peppermm.AbstractTask#getDescription
      * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Description</em>'.
-     * @see AbstractTask#getDescription()
+     * @see pepper.peppermm.AbstractTask#getDescription()
      * @see #getAbstractTask()
      * @generated
      */
     EAttribute getAbstractTask_Description();
 
     /**
-     * Returns the meta object for the attribute '{@link AbstractTask#getStartTime <em>Start
+     * Returns the meta object for the attribute '{@link pepper.peppermm.AbstractTask#getStartTime <em>Start
      * Time</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Start Time</em>'.
-     * @see AbstractTask#getStartTime()
+     * @see pepper.peppermm.AbstractTask#getStartTime()
      * @see #getAbstractTask()
      * @generated
      */
     EAttribute getAbstractTask_StartTime();
 
     /**
-     * Returns the meta object for the attribute '{@link AbstractTask#getEndTime <em>End Time</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.AbstractTask#getEndTime <em>End Time</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>End Time</em>'.
-     * @see AbstractTask#getEndTime()
+     * @see pepper.peppermm.AbstractTask#getEndTime()
      * @see #getAbstractTask()
      * @generated
      */
     EAttribute getAbstractTask_EndTime();
 
     /**
-     * Returns the meta object for the attribute '{@link AbstractTask#getProgress <em>Progress</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.AbstractTask#getProgress <em>Progress</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Progress</em>'.
-     * @see AbstractTask#getProgress()
+     * @see pepper.peppermm.AbstractTask#getProgress()
      * @see #getAbstractTask()
      * @generated
      */
     EAttribute getAbstractTask_Progress();
 
     /**
-     * Returns the meta object for the attribute '{@link AbstractTask#isComputeStartEndDynamically
+     * Returns the meta object for the attribute '{@link pepper.peppermm.AbstractTask#isComputeStartEndDynamically
      * <em>Compute Start End Dynamically</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Compute Start End Dynamically</em>'.
-     * @see AbstractTask#isComputeStartEndDynamically()
+     * @see pepper.peppermm.AbstractTask#isComputeStartEndDynamically()
      * @see #getAbstractTask()
      * @generated
      */
     EAttribute getAbstractTask_ComputeStartEndDynamically();
 
     /**
-     * Returns the meta object for the reference list '{@link AbstractTask#getTags <em>Tags</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference list '{@link AbstractTask#getTags <em>Tags</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Tags</em>'.
      * @see AbstractTask#getTags()
@@ -1957,73 +2002,84 @@ public interface PepperPackage extends EPackage {
     EReference getAbstractTask_Tags();
 
     /**
-     * Returns the meta object for the reference list '{@link AbstractTask#getAssignedPersons
+     * Returns the meta object for the reference list '{@link pepper.peppermm.AbstractTask#getAssignedPersons
      * <em>Assigned Persons</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Assigned Persons</em>'.
-     * @see AbstractTask#getAssignedPersons()
+     * @see pepper.peppermm.AbstractTask#getAssignedPersons()
      * @see #getAbstractTask()
      * @generated
      */
     EReference getAbstractTask_AssignedPersons();
 
     /**
-     * Returns the meta object for the reference list '{@link AbstractTask#getAssignedTeams <em>Assigned
+     * Returns the meta object for the reference list '{@link pepper.peppermm.AbstractTask#getAssignedTeams <em>Assigned
      * Teams</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Assigned Teams</em>'.
-     * @see AbstractTask#getAssignedTeams()
+     * @see pepper.peppermm.AbstractTask#getAssignedTeams()
      * @see #getAbstractTask()
      * @generated
      */
     EReference getAbstractTask_AssignedTeams();
 
     /**
-     * Returns the meta object for the containment reference list '{@link AbstractTask#getSubTasks
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.AbstractTask#getSubTasks
      * <em>Sub Tasks</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Sub Tasks</em>'.
-     * @see AbstractTask#getSubTasks()
+     * @see pepper.peppermm.AbstractTask#getSubTasks()
      * @see #getAbstractTask()
      * @generated
      */
     EReference getAbstractTask_SubTasks();
 
     /**
-     * Returns the meta object for the attribute '{@link AbstractTask#getCalculationOption
+     * Returns the meta object for the attribute '{@link pepper.peppermm.AbstractTask#getCalculationOption
      * <em>Calculation Option</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Calculation Option</em>'.
-     * @see AbstractTask#getCalculationOption()
+     * @see pepper.peppermm.AbstractTask#getCalculationOption()
      * @see #getAbstractTask()
      * @generated
      */
     EAttribute getAbstractTask_CalculationOption();
 
     /**
-     * Returns the meta object for the attribute '{@link AbstractTask#getDuration <em>Duration</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.AbstractTask#getDuration <em>Duration</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Duration</em>'.
-     * @see AbstractTask#getDuration()
+     * @see pepper.peppermm.AbstractTask#getDuration()
      * @see #getAbstractTask()
      * @generated
      */
     EAttribute getAbstractTask_Duration();
 
     /**
-     * Returns the meta object for class '{@link TagFolder <em>Tag Folder</em>}'. <!-- begin-user-doc
+     * Returns the meta object for the attribute '{@link pepper.peppermm.AbstractTask#getDurationViewMode <em>Duration
+     * View Mode</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Duration View Mode</em>'.
+     * @see pepper.peppermm.AbstractTask#getDurationViewMode()
+     * @see #getAbstractTask()
+     * @generated
+     */
+    EAttribute getAbstractTask_DurationViewMode();
+
+    /**
+     * Returns the meta object for class '{@link pepper.peppermm.TagFolder <em>Tag Folder</em>}'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Tag Folder</em>'.
-     * @see TagFolder
+     * @see pepper.peppermm.TagFolder
      * @generated
      */
     EClass getTagFolder();
 
     /**
-     * Returns the meta object for the attribute '{@link TagFolder#getName <em>Name</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link TagFolder#getName <em>Name</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see TagFolder#getName()
@@ -2033,40 +2089,40 @@ public interface PepperPackage extends EPackage {
     EAttribute getTagFolder_Name();
 
     /**
-     * Returns the meta object for the containment reference list '{@link TagFolder#getOwnedTags
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.TagFolder#getOwnedTags
      * <em>Owned Tags</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Tags</em>'.
-     * @see TagFolder#getOwnedTags()
+     * @see pepper.peppermm.TagFolder#getOwnedTags()
      * @see #getTagFolder()
      * @generated
      */
     EReference getTagFolder_OwnedTags();
 
     /**
-     * Returns the meta object for the containment reference list '{@link TagFolder#getSubFolders
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.TagFolder#getSubFolders
      * <em>Sub Folders</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Sub Folders</em>'.
-     * @see TagFolder#getSubFolders()
+     * @see pepper.peppermm.TagFolder#getSubFolders()
      * @see #getTagFolder()
      * @generated
      */
     EReference getTagFolder_SubFolders();
 
     /**
-     * Returns the meta object for class '{@link TaskTag <em>Task Tag</em>}'. <!-- begin-user-doc -->
+     * Returns the meta object for class '{@link pepper.peppermm.TaskTag <em>Task Tag</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Task Tag</em>'.
-     * @see TaskTag
+     * @see pepper.peppermm.TaskTag
      * @generated
      */
     EClass getTaskTag();
 
     /**
-     * Returns the meta object for the attribute '{@link TaskTag#getPrefix <em>Prefix</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link TaskTag#getPrefix <em>Prefix</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Prefix</em>'.
      * @see TaskTag#getPrefix()
@@ -2076,8 +2132,8 @@ public interface PepperPackage extends EPackage {
     EAttribute getTaskTag_Prefix();
 
     /**
-     * Returns the meta object for the attribute '{@link TaskTag#getSuffix <em>Suffix</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link TaskTag#getSuffix <em>Suffix</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Suffix</em>'.
      * @see TaskTag#getSuffix()
@@ -2087,59 +2143,59 @@ public interface PepperPackage extends EPackage {
     EAttribute getTaskTag_Suffix();
 
     /**
-     * Returns the meta object for class '{@link Task <em>Task</em>}'. <!-- begin-user-doc --> <!--
+     * Returns the meta object for class '{@link pepper.peppermm.Task <em>Task</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for class '<em>Task</em>'.
-     * @see Task
+     * @see pepper.peppermm.Task
      * @generated
      */
     EClass getTask();
 
     /**
-     * Returns the meta object for class '{@link Objective <em>Objective</em>}'. <!-- begin-user-doc -->
+     * Returns the meta object for class '{@link pepper.peppermm.Objective <em>Objective</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Objective</em>'.
-     * @see Objective
+     * @see pepper.peppermm.Objective
      * @generated
      */
     EClass getObjective();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Objective#getOwnedKeyResults
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Objective#getOwnedKeyResults
      * <em>Owned Key Results</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Key Results</em>'.
-     * @see Objective#getOwnedKeyResults()
+     * @see pepper.peppermm.Objective#getOwnedKeyResults()
      * @see #getObjective()
      * @generated
      */
     EReference getObjective_OwnedKeyResults();
 
     /**
-     * Returns the meta object for class '{@link KeyResult <em>Key Result</em>}'. <!-- begin-user-doc
+     * Returns the meta object for class '{@link pepper.peppermm.KeyResult <em>Key Result</em>}'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Key Result</em>'.
-     * @see KeyResult
+     * @see pepper.peppermm.KeyResult
      * @generated
      */
     EClass getKeyResult();
 
     /**
-     * Returns the meta object for class '{@link Project <em>Project</em>}'. <!-- begin-user-doc -->
+     * Returns the meta object for class '{@link pepper.peppermm.Project <em>Project</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Project</em>'.
-     * @see Project
+     * @see pepper.peppermm.Project
      * @generated
      */
     EClass getProject();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getName <em>Name</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Project#getName <em>Name</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see Project#getName()
@@ -2149,52 +2205,52 @@ public interface PepperPackage extends EPackage {
     EAttribute getProject_Name();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Project#getOwnedWorkpackages
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Project#getOwnedWorkpackages
      * <em>Owned Workpackages</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Workpackages</em>'.
-     * @see Project#getOwnedWorkpackages()
+     * @see pepper.peppermm.Project#getOwnedWorkpackages()
      * @see #getProject()
      * @generated
      */
     EReference getProject_OwnedWorkpackages();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Project#getOwnedObjectives
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Project#getOwnedObjectives
      * <em>Owned Objectives</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Objectives</em>'.
-     * @see Project#getOwnedObjectives()
+     * @see pepper.peppermm.Project#getOwnedObjectives()
      * @see #getProject()
      * @generated
      */
     EReference getProject_OwnedObjectives();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Project#getOwnedTagFolders
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Project#getOwnedTagFolders
      * <em>Owned Tag Folders</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Tag Folders</em>'.
-     * @see Project#getOwnedTagFolders()
+     * @see pepper.peppermm.Project#getOwnedTagFolders()
      * @see #getProject()
      * @generated
      */
     EReference getProject_OwnedTagFolders();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Project#getOwnedRisks
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Project#getOwnedRisks
      * <em>Owned Risks</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Risks</em>'.
-     * @see Project#getOwnedRisks()
+     * @see pepper.peppermm.Project#getOwnedRisks()
      * @see #getProject()
      * @generated
      */
     EReference getProject_OwnedRisks();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getReference <em>Reference</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Project#getReference <em>Reference</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Reference</em>'.
      * @see Project#getReference()
@@ -2204,63 +2260,63 @@ public interface PepperPackage extends EPackage {
     EAttribute getProject_Reference();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getDescription <em>Description</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getDescription <em>Description</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Description</em>'.
-     * @see Project#getDescription()
+     * @see pepper.peppermm.Project#getDescription()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_Description();
 
     /**
-     * Returns the meta object for the reference '{@link Project#getLeadingUnit <em>Leading Unit</em>}'.
+     * Returns the meta object for the reference '{@link pepper.peppermm.Project#getLeadingUnit <em>Leading Unit</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Leading Unit</em>'.
-     * @see Project#getLeadingUnit()
+     * @see pepper.peppermm.Project#getLeadingUnit()
      * @see #getProject()
      * @generated
      */
     EReference getProject_LeadingUnit();
 
     /**
-     * Returns the meta object for the reference list '{@link Project#getParticipantUnits
+     * Returns the meta object for the reference list '{@link pepper.peppermm.Project#getParticipantUnits
      * <em>Participant Units</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Participant Units</em>'.
-     * @see Project#getParticipantUnits()
+     * @see pepper.peppermm.Project#getParticipantUnits()
      * @see #getProject()
      * @generated
      */
     EReference getProject_ParticipantUnits();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getPlannifiedClientCopilMeetings
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getPlannifiedClientCopilMeetings
      * <em>Plannified Client Copil Meetings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Plannified Client Copil Meetings</em>'.
-     * @see Project#getPlannifiedClientCopilMeetings()
+     * @see pepper.peppermm.Project#getPlannifiedClientCopilMeetings()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_PlannifiedClientCopilMeetings();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getMainProgramBrick <em>Main Program
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getMainProgramBrick <em>Main Program
      * Brick</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Main Program Brick</em>'.
-     * @see Project#getMainProgramBrick()
+     * @see pepper.peppermm.Project#getMainProgramBrick()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_MainProgramBrick();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getState <em>State</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Project#getState <em>State</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>State</em>'.
      * @see Project#getState()
@@ -2270,41 +2326,41 @@ public interface PepperPackage extends EPackage {
     EAttribute getProject_State();
 
     /**
-     * Returns the meta object for the reference list '{@link Project#getClients <em>Clients</em>}'.
+     * Returns the meta object for the reference list '{@link pepper.peppermm.Project#getClients <em>Clients</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Clients</em>'.
-     * @see Project#getClients()
+     * @see pepper.peppermm.Project#getClients()
      * @see #getProject()
      * @generated
      */
     EReference getProject_Clients();
 
     /**
-     * Returns the meta object for the reference list '{@link Project#getPartners <em>Partners</em>}'.
+     * Returns the meta object for the reference list '{@link pepper.peppermm.Project#getPartners <em>Partners</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Partners</em>'.
-     * @see Project#getPartners()
+     * @see pepper.peppermm.Project#getPartners()
      * @see #getProject()
      * @generated
      */
     EReference getProject_Partners();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getIsTransverse <em>Is
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getIsTransverse <em>Is
      * Transverse</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Is Transverse</em>'.
-     * @see Project#getIsTransverse()
+     * @see pepper.peppermm.Project#getIsTransverse()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_IsTransverse();
 
     /**
-     * Returns the meta object for the reference '{@link Project#getLeader <em>Leader</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference '{@link Project#getLeader <em>Leader</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Leader</em>'.
      * @see Project#getLeader()
@@ -2314,41 +2370,41 @@ public interface PepperPackage extends EPackage {
     EReference getProject_Leader();
 
     /**
-     * Returns the meta object for the reference list '{@link Project#getMembers <em>Members</em>}'.
+     * Returns the meta object for the reference list '{@link pepper.peppermm.Project#getMembers <em>Members</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Members</em>'.
-     * @see Project#getMembers()
+     * @see pepper.peppermm.Project#getMembers()
      * @see #getProject()
      * @generated
      */
     EReference getProject_Members();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getIsSensitive <em>Is Sensitive</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getIsSensitive <em>Is Sensitive</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Is Sensitive</em>'.
-     * @see Project#getIsSensitive()
+     * @see pepper.peppermm.Project#getIsSensitive()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_IsSensitive();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getContractualStartDate <em>Contractual
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getContractualStartDate <em>Contractual
      * Start Date</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Contractual Start Date</em>'.
-     * @see Project#getContractualStartDate()
+     * @see pepper.peppermm.Project#getContractualStartDate()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_ContractualStartDate();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getDuration <em>Duration</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Project#getDuration <em>Duration</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Duration</em>'.
      * @see Project#getDuration()
@@ -2358,74 +2414,74 @@ public interface PepperPackage extends EPackage {
     EAttribute getProject_Duration();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getContractualEndDate <em>Contractual
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getContractualEndDate <em>Contractual
      * End Date</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Contractual End Date</em>'.
-     * @see Project#getContractualEndDate()
+     * @see pepper.peppermm.Project#getContractualEndDate()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_ContractualEndDate();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getEffectiveStartDate <em>Effective
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getEffectiveStartDate <em>Effective
      * Start Date</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Effective Start Date</em>'.
-     * @see Project#getEffectiveStartDate()
+     * @see pepper.peppermm.Project#getEffectiveStartDate()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_EffectiveStartDate();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getEffectiveEndDate <em>Effective End
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getEffectiveEndDate <em>Effective End
      * Date</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Effective End Date</em>'.
-     * @see Project#getEffectiveEndDate()
+     * @see pepper.peppermm.Project#getEffectiveEndDate()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_EffectiveEndDate();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getContractTermExtension <em>Contract
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getContractTermExtension <em>Contract
      * Term Extension</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Contract Term Extension</em>'.
-     * @see Project#getContractTermExtension()
+     * @see pepper.peppermm.Project#getContractTermExtension()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_ContractTermExtension();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getGlobalCost <em>Global Cost</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getGlobalCost <em>Global Cost</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Global Cost</em>'.
-     * @see Project#getGlobalCost()
+     * @see pepper.peppermm.Project#getGlobalCost()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_GlobalCost();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getFundingRate <em>Funding Rate</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getFundingRate <em>Funding Rate</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Funding Rate</em>'.
-     * @see Project#getFundingRate()
+     * @see pepper.peppermm.Project#getFundingRate()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_FundingRate();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getFunding <em>Funding</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Project#getFunding <em>Funding</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Funding</em>'.
      * @see Project#getFunding()
@@ -2435,8 +2491,8 @@ public interface PepperPackage extends EPackage {
     EAttribute getProject_Funding();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getManpower <em>Manpower</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Project#getManpower <em>Manpower</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Manpower</em>'.
      * @see Project#getManpower()
@@ -2446,8 +2502,8 @@ public interface PepperPackage extends EPackage {
     EAttribute getProject_Manpower();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getEOTP <em>EOTP</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Project#getEOTP <em>EOTP</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>EOTP</em>'.
      * @see Project#getEOTP()
@@ -2457,51 +2513,51 @@ public interface PepperPackage extends EPackage {
     EAttribute getProject_EOTP();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getStatisticOrder <em>Statistic
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getStatisticOrder <em>Statistic
      * Order</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Statistic Order</em>'.
-     * @see Project#getStatisticOrder()
+     * @see pepper.peppermm.Project#getStatisticOrder()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_StatisticOrder();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getInternalNeed <em>Internal
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getInternalNeed <em>Internal
      * Need</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Internal Need</em>'.
-     * @see Project#getInternalNeed()
+     * @see pepper.peppermm.Project#getInternalNeed()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_InternalNeed();
 
     /**
-     * Returns the meta object for the attribute '{@link Project#getClientNeed <em>Client Need</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Project#getClientNeed <em>Client Need</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Client Need</em>'.
-     * @see Project#getClientNeed()
+     * @see pepper.peppermm.Project#getClientNeed()
      * @see #getProject()
      * @generated
      */
     EAttribute getProject_ClientNeed();
 
     /**
-     * Returns the meta object for class '{@link Workpackage <em>Workpackage</em>}'. <!-- begin-user-doc
+     * Returns the meta object for class '{@link pepper.peppermm.Workpackage <em>Workpackage</em>}'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Workpackage</em>'.
-     * @see Workpackage
+     * @see pepper.peppermm.Workpackage
      * @generated
      */
     EClass getWorkpackage();
 
     /**
-     * Returns the meta object for the attribute '{@link Workpackage#getName <em>Name</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Workpackage#getName <em>Name</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
      * @see Workpackage#getName()
@@ -2511,41 +2567,41 @@ public interface PepperPackage extends EPackage {
     EAttribute getWorkpackage_Name();
 
     /**
-     * Returns the meta object for the attribute '{@link Workpackage#getDescription
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Workpackage#getDescription
      * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Description</em>'.
-     * @see Workpackage#getDescription()
+     * @see pepper.peppermm.Workpackage#getDescription()
      * @see #getWorkpackage()
      * @generated
      */
     EAttribute getWorkpackage_Description();
 
     /**
-     * Returns the meta object for the attribute '{@link Workpackage#getStartDate <em>Start Date</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Workpackage#getStartDate <em>Start Date</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Start Date</em>'.
-     * @see Workpackage#getStartDate()
+     * @see pepper.peppermm.Workpackage#getStartDate()
      * @see #getWorkpackage()
      * @generated
      */
     EAttribute getWorkpackage_StartDate();
 
     /**
-     * Returns the meta object for the attribute '{@link Workpackage#getEndDate <em>End Date</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Workpackage#getEndDate <em>End Date</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>End Date</em>'.
-     * @see Workpackage#getEndDate()
+     * @see pepper.peppermm.Workpackage#getEndDate()
      * @see #getWorkpackage()
      * @generated
      */
     EAttribute getWorkpackage_EndDate();
 
     /**
-     * Returns the meta object for the reference '{@link Workpackage#getLeader <em>Leader</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the reference '{@link Workpackage#getLeader <em>Leader</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Leader</em>'.
      * @see Workpackage#getLeader()
@@ -2555,19 +2611,19 @@ public interface PepperPackage extends EPackage {
     EReference getWorkpackage_Leader();
 
     /**
-     * Returns the meta object for the reference list '{@link Workpackage#getParticipants
+     * Returns the meta object for the reference list '{@link pepper.peppermm.Workpackage#getParticipants
      * <em>Participants</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Participants</em>'.
-     * @see Workpackage#getParticipants()
+     * @see pepper.peppermm.Workpackage#getParticipants()
      * @see #getWorkpackage()
      * @generated
      */
     EReference getWorkpackage_Participants();
 
     /**
-     * Returns the meta object for the attribute '{@link Workpackage#getEffort <em>Effort</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Workpackage#getEffort <em>Effort</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Effort</em>'.
      * @see Workpackage#getEffort()
@@ -2577,204 +2633,204 @@ public interface PepperPackage extends EPackage {
     EAttribute getWorkpackage_Effort();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Workpackage#getOutputs
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Workpackage#getOutputs
      * <em>Outputs</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Outputs</em>'.
-     * @see Workpackage#getOutputs()
+     * @see pepper.peppermm.Workpackage#getOutputs()
      * @see #getWorkpackage()
      * @generated
      */
     EReference getWorkpackage_Outputs();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Workpackage#getOwnedTasks
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Workpackage#getOwnedTasks
      * <em>Owned Tasks</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Tasks</em>'.
-     * @see Workpackage#getOwnedTasks()
+     * @see pepper.peppermm.Workpackage#getOwnedTasks()
      * @see #getWorkpackage()
      * @generated
      */
     EReference getWorkpackage_OwnedTasks();
 
     /**
-     * Returns the meta object for the containment reference list '{@link Workpackage#getOwnedObjectives
+     * Returns the meta object for the containment reference list '{@link pepper.peppermm.Workpackage#getOwnedObjectives
      * <em>Owned Objectives</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Owned Objectives</em>'.
-     * @see Workpackage#getOwnedObjectives()
+     * @see pepper.peppermm.Workpackage#getOwnedObjectives()
      * @see #getWorkpackage()
      * @generated
      */
     EReference getWorkpackage_OwnedObjectives();
 
     /**
-     * Returns the meta object for the attribute '{@link Workpackage#getProgress <em>Progress</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Workpackage#getProgress <em>Progress</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Progress</em>'.
-     * @see Workpackage#getProgress()
+     * @see pepper.peppermm.Workpackage#getProgress()
      * @see #getWorkpackage()
      * @generated
      */
     EAttribute getWorkpackage_Progress();
 
     /**
-     * Returns the meta object for the attribute '{@link Workpackage#getCalculationOption
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Workpackage#getCalculationOption
      * <em>Calculation Option</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Calculation Option</em>'.
-     * @see Workpackage#getCalculationOption()
+     * @see pepper.peppermm.Workpackage#getCalculationOption()
      * @see #getWorkpackage()
      * @generated
      */
     EAttribute getWorkpackage_CalculationOption();
 
     /**
-     * Returns the meta object for the attribute '{@link Workpackage#getDuration <em>Duration</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Workpackage#getDuration <em>Duration</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Duration</em>'.
-     * @see Workpackage#getDuration()
+     * @see pepper.peppermm.Workpackage#getDuration()
      * @see #getWorkpackage()
      * @generated
      */
     EAttribute getWorkpackage_Duration();
 
     /**
-     * Returns the meta object for class '{@link WorkpackageArtefact <em>Workpackage Artefact</em>}'.
+     * Returns the meta object for class '{@link pepper.peppermm.WorkpackageArtefact <em>Workpackage Artefact</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Workpackage Artefact</em>'.
-     * @see WorkpackageArtefact
+     * @see pepper.peppermm.WorkpackageArtefact
      * @generated
      */
     EClass getWorkpackageArtefact();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getName <em>Name</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getName <em>Name</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
-     * @see WorkpackageArtefact#getName()
+     * @see pepper.peppermm.WorkpackageArtefact#getName()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_Name();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getDescription
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getDescription
      * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Description</em>'.
-     * @see WorkpackageArtefact#getDescription()
+     * @see pepper.peppermm.WorkpackageArtefact#getDescription()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_Description();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getNature
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getNature
      * <em>Nature</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Nature</em>'.
-     * @see WorkpackageArtefact#getNature()
+     * @see pepper.peppermm.WorkpackageArtefact#getNature()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_Nature();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getPlannedDeadline
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getPlannedDeadline
      * <em>Planned Deadline</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Planned Deadline</em>'.
-     * @see WorkpackageArtefact#getPlannedDeadline()
+     * @see pepper.peppermm.WorkpackageArtefact#getPlannedDeadline()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_PlannedDeadline();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getEffectiveDeadLine
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getEffectiveDeadLine
      * <em>Effective Dead Line</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Effective Dead Line</em>'.
-     * @see WorkpackageArtefact#getEffectiveDeadLine()
+     * @see pepper.peppermm.WorkpackageArtefact#getEffectiveDeadLine()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_EffectiveDeadLine();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getIsInvoiceTrigger <em>Is
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getIsInvoiceTrigger <em>Is
      * Invoice Trigger</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Is Invoice Trigger</em>'.
-     * @see WorkpackageArtefact#getIsInvoiceTrigger()
+     * @see pepper.peppermm.WorkpackageArtefact#getIsInvoiceTrigger()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_IsInvoiceTrigger();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getInvoiceAmount
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getInvoiceAmount
      * <em>Invoice Amount</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Invoice Amount</em>'.
-     * @see WorkpackageArtefact#getInvoiceAmount()
+     * @see pepper.peppermm.WorkpackageArtefact#getInvoiceAmount()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_InvoiceAmount();
 
     /**
-     * Returns the meta object for the reference '{@link WorkpackageArtefact#getResponsible
+     * Returns the meta object for the reference '{@link pepper.peppermm.WorkpackageArtefact#getResponsible
      * <em>Responsible</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Responsible</em>'.
-     * @see WorkpackageArtefact#getResponsible()
+     * @see pepper.peppermm.WorkpackageArtefact#getResponsible()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EReference getWorkpackageArtefact_Responsible();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getVersion
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getVersion
      * <em>Version</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Version</em>'.
-     * @see WorkpackageArtefact#getVersion()
+     * @see pepper.peppermm.WorkpackageArtefact#getVersion()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_Version();
 
     /**
-     * Returns the meta object for the attribute '{@link WorkpackageArtefact#getIsObsolete <em>Is
+     * Returns the meta object for the attribute '{@link pepper.peppermm.WorkpackageArtefact#getIsObsolete <em>Is
      * Obsolete</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Is Obsolete</em>'.
-     * @see WorkpackageArtefact#getIsObsolete()
+     * @see pepper.peppermm.WorkpackageArtefact#getIsObsolete()
      * @see #getWorkpackageArtefact()
      * @generated
      */
     EAttribute getWorkpackageArtefact_IsObsolete();
 
     /**
-     * Returns the meta object for class '{@link Risk <em>Risk</em>}'. <!-- begin-user-doc --> <!--
+     * Returns the meta object for class '{@link pepper.peppermm.Risk <em>Risk</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for class '<em>Risk</em>'.
-     * @see Risk
+     * @see pepper.peppermm.Risk
      * @generated
      */
     EClass getRisk();
 
     /**
-     * Returns the meta object for the attribute '{@link Risk#getKind <em>Kind</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Risk#getKind <em>Kind</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Kind</em>'.
      * @see Risk#getKind()
@@ -2784,19 +2840,19 @@ public interface PepperPackage extends EPackage {
     EAttribute getRisk_Kind();
 
     /**
-     * Returns the meta object for the attribute '{@link Risk#getDescription <em>Description</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Risk#getDescription <em>Description</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Description</em>'.
-     * @see Risk#getDescription()
+     * @see pepper.peppermm.Risk#getDescription()
      * @see #getRisk()
      * @generated
      */
     EAttribute getRisk_Description();
 
     /**
-     * Returns the meta object for the attribute '{@link Risk#getCriticity <em>Criticity</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Risk#getCriticity <em>Criticity</em>}'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Criticity</em>'.
      * @see Risk#getCriticity()
@@ -2806,8 +2862,8 @@ public interface PepperPackage extends EPackage {
     EAttribute getRisk_Criticity();
 
     /**
-     * Returns the meta object for the attribute '{@link Risk#getAction <em>Action</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Risk#getAction <em>Action</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Action</em>'.
      * @see Risk#getAction()
@@ -2817,30 +2873,30 @@ public interface PepperPackage extends EPackage {
     EAttribute getRisk_Action();
 
     /**
-     * Returns the meta object for the reference '{@link Risk#getResponsible <em>Responsible</em>}'.
+     * Returns the meta object for the reference '{@link pepper.peppermm.Risk#getResponsible <em>Responsible</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Responsible</em>'.
-     * @see Risk#getResponsible()
+     * @see pepper.peppermm.Risk#getResponsible()
      * @see #getRisk()
      * @generated
      */
     EReference getRisk_Responsible();
 
     /**
-     * Returns the meta object for the attribute '{@link Risk#getOperationDate <em>Operation
+     * Returns the meta object for the attribute '{@link pepper.peppermm.Risk#getOperationDate <em>Operation
      * Date</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Operation Date</em>'.
-     * @see Risk#getOperationDate()
+     * @see pepper.peppermm.Risk#getOperationDate()
      * @see #getRisk()
      * @generated
      */
     EAttribute getRisk_OperationDate();
 
     /**
-     * Returns the meta object for the attribute '{@link Risk#getState <em>State</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for the attribute '{@link Risk#getState <em>State</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>State</em>'.
      * @see Risk#getState()
@@ -2850,19 +2906,19 @@ public interface PepperPackage extends EPackage {
     EAttribute getRisk_State();
 
     /**
-     * Returns the meta object for the reference list '{@link Risk#getWorkpackages
+     * Returns the meta object for the reference list '{@link pepper.peppermm.Risk#getWorkpackages
      * <em>Workpackages</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Workpackages</em>'.
-     * @see Risk#getWorkpackages()
+     * @see pepper.peppermm.Risk#getWorkpackages()
      * @see #getRisk()
      * @generated
      */
     EReference getRisk_Workpackages();
 
     /**
-     * Returns the meta object for class '{@link DependencyLink <em>Dependency Link</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link DependencyLink <em>Dependency Link</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for class '<em>Dependency Link</em>'.
      * @see DependencyLink
@@ -2871,124 +2927,134 @@ public interface PepperPackage extends EPackage {
     EClass getDependencyLink();
 
     /**
-     * Returns the meta object for the attribute '{@link DependencyLink#getTargetKind <em>Target
+     * Returns the meta object for the attribute '{@link pepper.peppermm.DependencyLink#getTargetKind <em>Target
      * Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Target Kind</em>'.
-     * @see DependencyLink#getTargetKind()
+     * @see pepper.peppermm.DependencyLink#getTargetKind()
      * @see #getDependencyLink()
      * @generated
      */
     EAttribute getDependencyLink_TargetKind();
 
     /**
-     * Returns the meta object for the attribute '{@link DependencyLink#getSourceKind <em>Source
+     * Returns the meta object for the attribute '{@link pepper.peppermm.DependencyLink#getSourceKind <em>Source
      * Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Source Kind</em>'.
-     * @see DependencyLink#getSourceKind()
+     * @see pepper.peppermm.DependencyLink#getSourceKind()
      * @see #getDependencyLink()
      * @generated
      */
     EAttribute getDependencyLink_SourceKind();
 
     /**
-     * Returns the meta object for the reference '{@link DependencyLink#getSource <em>Source</em>}'.
+     * Returns the meta object for the reference '{@link pepper.peppermm.DependencyLink#getSource <em>Source</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Source</em>'.
-     * @see DependencyLink#getSource()
+     * @see pepper.peppermm.DependencyLink#getSource()
      * @see #getDependencyLink()
      * @generated
      */
     EReference getDependencyLink_Source();
 
     /**
-     * Returns the meta object for the attribute '{@link DependencyLink#getDuration <em>Duration</em>}'.
+     * Returns the meta object for the attribute '{@link pepper.peppermm.DependencyLink#getDuration <em>Duration</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Duration</em>'.
-     * @see DependencyLink#getDuration()
+     * @see pepper.peppermm.DependencyLink#getDuration()
      * @see #getDependencyLink()
      * @generated
      */
     EAttribute getDependencyLink_Duration();
 
     /**
-     * Returns the meta object for class '{@link DependencyRelatedObject <em>Dependency Related
+     * Returns the meta object for class '{@link pepper.peppermm.DependencyRelatedObject <em>Dependency Related
      * Object</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Dependency Related Object</em>'.
-     * @see DependencyRelatedObject
+     * @see pepper.peppermm.DependencyRelatedObject
      * @generated
      */
     EClass getDependencyRelatedObject();
 
     /**
      * Returns the meta object for the containment reference list
-     * '{@link DependencyRelatedObject#getDependencies <em>Dependencies</em>}'. <!-- begin-user-doc -->
+     * '{@link pepper.peppermm.DependencyRelatedObject#getDependencies <em>Dependencies</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '<em>Dependencies</em>'.
-     * @see DependencyRelatedObject#getDependencies()
+     * @see pepper.peppermm.DependencyRelatedObject#getDependencies()
      * @see #getDependencyRelatedObject()
      * @generated
      */
     EReference getDependencyRelatedObject_Dependencies();
 
     /**
-     * Returns the meta object for enum '{@link WorkpackageArtefactNature <em>Workpackage Artefact
+     * Returns the meta object for enum '{@link pepper.peppermm.WorkpackageArtefactNature <em>Workpackage Artefact
      * Nature</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for enum '<em>Workpackage Artefact Nature</em>'.
-     * @see WorkpackageArtefactNature
+     * @see pepper.peppermm.WorkpackageArtefactNature
      * @generated
      */
     EEnum getWorkpackageArtefactNature();
 
     /**
-     * Returns the meta object for enum '{@link StartOrEnd <em>Start Or End</em>}'. <!-- begin-user-doc
+     * Returns the meta object for enum '{@link pepper.peppermm.StartOrEnd <em>Start Or End</em>}'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
      * @return the meta object for enum '<em>Start Or End</em>'.
-     * @see StartOrEnd
+     * @see pepper.peppermm.StartOrEnd
      * @generated
      */
     EEnum getStartOrEnd();
 
     /**
-     * Returns the meta object for enum '{@link TaskTimeBoundariesConstraint <em>Task Time Boundaries
+     * Returns the meta object for enum '{@link pepper.peppermm.TaskTimeBoundariesConstraint <em>Task Time Boundaries
      * Constraint</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for enum '<em>Task Time Boundaries Constraint</em>'.
-     * @see TaskTimeBoundariesConstraint
+     * @see pepper.peppermm.TaskTimeBoundariesConstraint
      * @generated
      */
     EEnum getTaskTimeBoundariesConstraint();
 
     /**
-     * Returns the meta object for enum '{@link RiskKind <em>Risk Kind</em>}'. <!-- begin-user-doc -->
+     * Returns the meta object for enum '{@link pepper.peppermm.DurationViewMode <em>Duration View Mode</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for enum '<em>Duration View Mode</em>'.
+     * @see pepper.peppermm.DurationViewMode
+     * @generated
+     */
+    EEnum getDurationViewMode();
+
+    /**
+     * Returns the meta object for enum '{@link pepper.peppermm.RiskKind <em>Risk Kind</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @return the meta object for enum '<em>Risk Kind</em>'.
-     * @see RiskKind
+     * @see pepper.peppermm.RiskKind
      * @generated
      */
     EEnum getRiskKind();
 
     /**
-     * Returns the meta object for enum '{@link RiskState <em>Risk State</em>}'. <!-- begin-user-doc -->
+     * Returns the meta object for enum '{@link pepper.peppermm.RiskState <em>Risk State</em>}'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @return the meta object for enum '<em>Risk State</em>'.
-     * @see RiskState
+     * @see pepper.peppermm.RiskState
      * @generated
      */
     EEnum getRiskState();
 
     /**
-     * Returns the meta object for enum '{@link ProjectState <em>Project State</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for enum '{@link ProjectState <em>Project State</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @return the meta object for enum '<em>Project State</em>'.
      * @see ProjectState
@@ -3310,6 +3376,14 @@ public interface PepperPackage extends EPackage {
          * @generated
          */
         EAttribute ABSTRACT_TASK__DURATION = eINSTANCE.getAbstractTask_Duration();
+
+        /**
+         * The meta object literal for the '<em><b>Duration View Mode</b></em>' attribute feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ABSTRACT_TASK__DURATION_VIEW_MODE = eINSTANCE.getAbstractTask_DurationViewMode();
 
         /**
          * The meta object literal for the '{@link pepper.peppermm.impl.TagFolderImpl <em>Tag Folder</em>}' class. <!--
@@ -3996,10 +4070,10 @@ public interface PepperPackage extends EPackage {
         EAttribute DEPENDENCY_LINK__DURATION = eINSTANCE.getDependencyLink_Duration();
 
         /**
-         * The meta object literal for the '{@link DependencyRelatedObject <em>Dependency Related
+         * The meta object literal for the '{@link pepper.peppermm.DependencyRelatedObject <em>Dependency Related
          * Object</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @see DependencyRelatedObject
+         * @see pepper.peppermm.DependencyRelatedObject
          * @see pepper.peppermm.impl.PepperPackageImpl#getDependencyRelatedObject()
          * @generated
          */
@@ -4014,18 +4088,18 @@ public interface PepperPackage extends EPackage {
         EReference DEPENDENCY_RELATED_OBJECT__DEPENDENCIES = eINSTANCE.getDependencyRelatedObject_Dependencies();
 
         /**
-         * The meta object literal for the '{@link WorkpackageArtefactNature <em>Workpackage Artefact
+         * The meta object literal for the '{@link pepper.peppermm.WorkpackageArtefactNature <em>Workpackage Artefact
          * Nature</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @see WorkpackageArtefactNature
+         * @see pepper.peppermm.WorkpackageArtefactNature
          * @see pepper.peppermm.impl.PepperPackageImpl#getWorkpackageArtefactNature()
          * @generated
          */
         EEnum WORKPACKAGE_ARTEFACT_NATURE = eINSTANCE.getWorkpackageArtefactNature();
 
         /**
-         * The meta object literal for the '{@link StartOrEnd <em>Start Or End</em>}' enum. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '{@link StartOrEnd <em>Start Or End</em>}' enum. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
          * 
          * @see StartOrEnd
          * @see pepper.peppermm.impl.PepperPackageImpl#getStartOrEnd()
@@ -4034,18 +4108,28 @@ public interface PepperPackage extends EPackage {
         EEnum START_OR_END = eINSTANCE.getStartOrEnd();
 
         /**
-         * The meta object literal for the '{@link TaskTimeBoundariesConstraint <em>Task Time Boundaries
+         * The meta object literal for the '{@link pepper.peppermm.TaskTimeBoundariesConstraint <em>Task Time Boundaries
          * Constraint</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @see TaskTimeBoundariesConstraint
+         * @see pepper.peppermm.TaskTimeBoundariesConstraint
          * @see pepper.peppermm.impl.PepperPackageImpl#getTaskTimeBoundariesConstraint()
          * @generated
          */
         EEnum TASK_TIME_BOUNDARIES_CONSTRAINT = eINSTANCE.getTaskTimeBoundariesConstraint();
 
         /**
-         * The meta object literal for the '{@link RiskKind <em>Risk Kind</em>}' enum. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '{@link pepper.peppermm.DurationViewMode <em>Duration View Mode</em>}' enum.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see pepper.peppermm.DurationViewMode
+         * @see pepper.peppermm.impl.PepperPackageImpl#getDurationViewMode()
+         * @generated
+         */
+        EEnum DURATION_VIEW_MODE = eINSTANCE.getDurationViewMode();
+
+        /**
+         * The meta object literal for the '{@link RiskKind <em>Risk Kind</em>}' enum. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
          * 
          * @see RiskKind
          * @see pepper.peppermm.impl.PepperPackageImpl#getRiskKind()
@@ -4054,8 +4138,8 @@ public interface PepperPackage extends EPackage {
         EEnum RISK_KIND = eINSTANCE.getRiskKind();
 
         /**
-         * The meta object literal for the '{@link RiskState <em>Risk State</em>}' enum. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '{@link RiskState <em>Risk State</em>}' enum. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
          * 
          * @see RiskState
          * @see pepper.peppermm.impl.PepperPackageImpl#getRiskState()
@@ -4064,8 +4148,8 @@ public interface PepperPackage extends EPackage {
         EEnum RISK_STATE = eINSTANCE.getRiskState();
 
         /**
-         * The meta object literal for the '{@link ProjectState <em>Project State</em>}' enum. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '{@link ProjectState <em>Project State</em>}' enum. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
          * 
          * @see ProjectState
          * @see pepper.peppermm.impl.PepperPackageImpl#getProjectState()
